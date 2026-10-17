@@ -1,0 +1,6 @@
+{
+  "name": "Bombheq Partners | Consulting Engineers",
+  "description": "High-performance React website for Bombheq Partners Consulting Engineers with dynamic Headless CMS and JSON content management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

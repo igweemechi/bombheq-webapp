@@ -1,0 +1,417 @@
+{
+  "version": "1.0.0",
+  "lastUpdated": "2026-10-17",
+  "company": {
+    "name": "Bombheq Partners",
+    "tagline": "CONSULTING ENGINEERS",
+    "affiliation": "A Ricardo Company",
+    "address": "102 Anderson Drive Greenbank, QLD 4124, Australia",
+    "addressShort": "102 Anderson Drive Greenbank",
+    "phone": "+0410-826-339",
+    "email": "Bombheqpartners@gmail.com",
+    "hours": "Mon - Fri : 09 AM - 09 PM",
+    "logoPrimary": "https://res.cloudinary.com/detfwst5p/image/upload/v1766658236/bombheq%20webpage/img/icon/bombheq-brand-icon-pri_yxprma.png",
+    "logoWhite": "https://res.cloudinary.com/detfwst5p/image/upload/v1766658236/bombheq%20webpage/img/icon/bombheq-brand-icon-sub-sec_p4zb1q.png",
+    "favicon": "https://res.cloudinary.com/detfwst5p/image/upload/v1766658237/bombheq%20webpage/img/icon/bombheq-tab-icon_ovm0mk.png",
+    "socials": {
+      "linkedin": "https://www.linkedin.com/company/bombheq-partners",
+      "twitter": "https://twitter.com/bombheq",
+      "facebook": "https://facebook.com/bombheqpartners",
+      "instagram": "https://instagram.com/bombheqpartners",
+      "youtube": "https://youtube.com/@bombheqpartners"
+    }
+  },
+  "navigation": {
+    "links": [
+      { "id": "home", "label": "Home", "path": "/" },
+      { "id": "services", "label": "Services", "path": "/services" },
+      { "id": "strategy", "label": "Strategy", "path": "/strategy" },
+      { "id": "transaction", "label": "Transaction", "path": "/transaction" },
+      { "id": "cases", "label": "Case Studies", "path": "/case-studies" },
+      { "id": "team", "label": "Our People", "path": "/people" },
+      { "id": "contact", "label": "Contact", "path": "/contact" }
+    ],
+    "ctaButton": {
+      "label": "Get in Touch",
+      "actionView": "contact"
+    }
+  },
+  "hero": {
+    "autoPlayIntervalMs": 6000,
+    "slides": [
+      {
+        "id": "slide-infrastructure",
+        "kicker": "Infrastructure Done Better",
+        "title": "Delivering transformative infrastructure solutions with clarity and precision.",
+        "subtitle": "Bombheq Partners works hand in hand with clients to solve complex engineering and commercial challenges. As leading thinkers, we strive for infrastructure that improves our world and delivers efficiency, effectiveness, and economic value.",
+        "ctaText": "Explore Advisory",
+        "ctaLink": "services",
+        "secondaryCtaText": "Case Studies",
+        "secondaryCtaLink": "cases",
+        "bgImage": "https://res.cloudinary.com/detfwst5p/image/upload/v1766658226/bombheq%20webpage/img/berlin-5010635_1280_drcldj.jpg"
+      },
+      {
+        "id": "slide-energy",
+        "kicker": "Energy & Renewables",
+        "title": "Planning and implementing your energy transition strategy.",
+        "subtitle": "Navigating regulatory frameworks, grid integration, and clean capital deployment to build resilient, net-zero future utilities and transit networks.",
+        "ctaText": "Our Strategy",
+        "ctaLink": "strategy",
+        "secondaryCtaText": "Consultation",
+        "secondaryCtaLink": "contact",
+        "bgImage": "https://res.cloudinary.com/detfwst5p/image/upload/v1766658234/bombheq%20webpage/img/fast-rail-1_k097jz.jpg"
+      },
+      {
+        "id": "slide-procurement",
+        "kicker": "Leading Edge Procurement",
+        "title": "Next-generation procurement and data-rich digital environments.",
+        "subtitle": "Maximising collaboration, testing next-gen delivery models, and managing risk to turn multi-billion dollar master plans into operational realities.",
+        "ctaText": "Transaction Advisory",
+        "ctaLink": "transaction",
+        "secondaryCtaText": "Meet Our Team",
+        "secondaryCtaLink": "team",
+        "bgImage": "https://res.cloudinary.com/detfwst5p/image/upload/v1766658242/bombheq%20webpage/img/transcation-1_rhvods.jpg"
+      }
+    ]
+  },
+  "valueProposition": {
+    "badge": "How We Help Our Clients",
+    "title": "The world is evolving, and traditional service delivery models are changing.",
+    "description": "We recognise that the ever-changing environment, evolving customer expectations, digital disruption, and rapid advances in technology bring both profound challenges and tremendous opportunities.",
+    "secondaryDescription": "We bring deep domain engineering expertise, seasoned transaction insight, and proven commercial rigor to help our public and private sector clients navigate their most complex infrastructure commitments.",
+    "image": "https://res.cloudinary.com/detfwst5p/image/upload/v1766658226/bombheq%20webpage/img/bombheq_with_picture_yjqge8.jpg",
+    "metrics": [
+      {
+        "id": "m1",
+        "label": "2024 Advisory Portfolio",
+        "value": "$750M+",
+        "subtext": "Active strategic infrastructure"
+      },
+      {
+        "id": "m2",
+        "label": "Flagship Mega-Projects",
+        "value": "$25.4B+",
+        "subtext": "Fast Rail, Cross River, & Quay"
+      },
+      {
+        "id": "m3",
+        "label": "Commercial Certainty",
+        "value": "100%",
+        "subtext": "Evidence-grounded frameworks"
+      },
+      {
+        "id": "m4",
+        "label": "Ricardo Global Network",
+        "value": "Global",
+        "subtext": "World-class engineering backing"
+      }
+    ]
+  },
+  "services": [
+    {
+      "id": "strategy",
+      "shortName": "Strategy",
+      "name": "Strategy, Portfolio & Policy Advice",
+      "kicker": "Meeting Future Challenges",
+      "headline": "We assist in developing effective policy responses",
+      "summary": "At Bombheq Partners we help create clarity where there is uncertainty. We help our clients simplify complex problems and determine pathways to address difficult infrastructure and policy questions.",
+      "fullDescription": "We do this by assisting governments and large corporate clients to develop effective policy and strategy responses to emerging issues. We help clients chart direction on complex infrastructure planning, investment and project integration matters. We also help clients optimise investment portfolios and improve their governance and investment decision making to deliver the best service delivery outcomes.",
+      "metricsText": "~$750m",
+      "metricsLabel": "2024 Project Value Advised",
+      "image": "https://res.cloudinary.com/detfwst5p/image/upload/v1766658241/bombheq%20webpage/img/Strategy-1_z9eed3.jpg",
+      "iconName": "Compass",
+      "bulletPoints": [
+        "Adapt to a fast changing demographic and regulatory world",
+        "Deal decisively with complex, high-friction multi-agency challenges",
+        "Develop workable, pragmatic, and defensible investment strategies",
+        "Deliver measurable public value and elevated community services",
+        "Optimise institutional governance to make the best use of scarce resources"
+      ],
+      "methodologySteps": [
+        {
+          "step": "01",
+          "title": "Evidence-Based Discovery",
+          "description": "Rigorous quantitative and policy review analyzing the root causes of systemic challenges."
+        },
+        {
+          "step": "02",
+          "title": "Collaborative Co-Design",
+          "description": "Facilitating multi-stakeholder workshops to establish consensus and realistic horizons."
+        },
+        {
+          "step": "03",
+          "title": "Implementation Framework",
+          "description": "Clear governance structures, KPIs, and phased roadmaps for sustainable delivery."
+        }
+      ]
+    },
+    {
+      "id": "transaction",
+      "shortName": "Transaction",
+      "name": "Procurement & Transaction Management",
+      "kicker": "Delivering Value For Money",
+      "headline": "Leading edge of procurement and collaborative contracting",
+      "summary": "Infrastructure projects continue to grow in size and complexity. Costs are increasing, timeframes tightening, and supply chains consolidating. Procurement must evolve to position projects for success.",
+      "fullDescription": "At Bombheq Partners, our people are at the leading edge of procurement; from introducing alliances into public infrastructure to using artificial intelligence to aid the development of project documentation. We have developed relationships across the globe and across industries to identify new techniques, testing these within the infrastructure environment and constantly evolving our approach.",
+      "metricsText": "Next-Gen",
+      "metricsLabel": "Digital Procurement Models",
+      "image": "https://res.cloudinary.com/detfwst5p/image/upload/v1766658242/bombheq%20webpage/img/transcation-1_rhvods.jpg",
+      "iconName": "Layers",
+      "bulletPoints": [
+        "Collaborative and alliance contracting frameworks",
+        "Data-rich digital environments for procurement execution",
+        "Extensive institutional library of commercial models and contract forms",
+        "Differentiating genuine market issues from negotiation positioning",
+        "AI-accelerated project documentation and tender analysis"
+      ],
+      "methodologySteps": [
+        {
+          "step": "01",
+          "title": "Market Sounding & Appetite",
+          "description": "Engaging Tier-1 contractors and suppliers to test risk allocations before tender release."
+        },
+        {
+          "step": "02",
+          "title": "Interactive Tendering",
+          "description": "Guiding structured collaborative workshops to refine bidder solutions and price certainty."
+        },
+        {
+          "step": "03",
+          "title": "Contract Finalisation",
+          "description": "Robust legal-commercial alignment to achieve uncompromised commercial close."
+        }
+      ]
+    },
+    {
+      "id": "disputes",
+      "shortName": "Disputes",
+      "name": "Contract Dispute & Expert Witness",
+      "kicker": "Rigorous Assessment",
+      "headline": "Independent forensic analysis and dispute resolution",
+      "summary": "When contractual disputes arise on complex infrastructure, independent objectivity, forensic delay modeling, and authoritative expert testimony protect client value.",
+      "fullDescription": "Our dispute advisory team draws on decades of mega-project experience to evaluate contractual claims, schedule impacts, and disruption. We act as independent expert witnesses and strategic advisers, providing clarity when contractual tensions threaten delivery or lead to formal arbitrations.",
+      "metricsText": "100%",
+      "metricsLabel": "Independent Rigor",
+      "image": "https://res.cloudinary.com/detfwst5p/image/upload/v1766658242/bombheq%20webpage/img/transcation-2_botudh.jpg",
+      "iconName": "Scale",
+      "bulletPoints": [
+        "Forensic critical-path delay and disruption analysis",
+        "Independent expert witness reports for arbitration and courts",
+        "Dispute Avoidance Board (DAB) representation and mediation",
+        "Quantum evaluation and variation claim verification",
+        "Post-dispute relationship rebuilding and reset strategies"
+      ],
+      "methodologySteps": [
+        {
+          "step": "01",
+          "title": "Forensic Program Audit",
+          "description": "Reconstructing the critical path and as-built chronology from contemporaneous project records."
+        },
+        {
+          "step": "02",
+          "title": "Quantum & Entitlement Check",
+          "description": "Cross-verifying delay causes against contractual clauses and cost evidence."
+        },
+        {
+          "step": "03",
+          "title": "Expert Report & Testimony",
+          "description": "Delivering clear, defensible expert evidence with highest court standing."
+        }
+      ]
+    },
+    {
+      "id": "commercial",
+      "shortName": "Commercial",
+      "name": "Delivery Strategies & Commercial Advisory",
+      "kicker": "Effective Delivery",
+      "headline": "Successful commercial governance and relationship outcomes",
+      "summary": "We set our clients up for success through trusted advice, backed up through advanced analysis, ideas generation, and proactive commercial lifecycle administration.",
+      "fullDescription": "Our teams work in highly collaborative environments that draw on diverse backgrounds to analyse problems and develop bespoke solutions. We work with clients to implement tailored solutions and strategies, being with them every step of the journey. We recognise that our success is inextricably linked to their success.",
+      "metricsText": "End-to-End",
+      "metricsLabel": "Commercial Lifecycle Management",
+      "image": "https://res.cloudinary.com/detfwst5p/image/upload/v1766785222/bombheq%20webpage/img/service_1_by1ae8.jpg",
+      "iconName": "ShieldCheck",
+      "bulletPoints": [
+        "Tailored delivery models (D&C, PPP, Alliances, Collaborative)",
+        "Risk allocation modeling and contingency quantitative analysis",
+        "Comprehensive commercial administration during construction",
+        "Value-for-money peer reviews and Gateway approvals",
+        "Inter-agency relationship management and contract management"
+      ],
+      "methodologySteps": [
+        {
+          "step": "01",
+          "title": "Risk Allocation Matrix",
+          "description": "Assigning risks to the party best equipped to manage and mitigate them."
+        },
+        {
+          "step": "02",
+          "title": "Commercial Protocol Setup",
+          "description": "Establishing early-warning systems, change control, and KPI tracking."
+        },
+        {
+          "step": "03",
+          "title": "Active Delivery Administration",
+          "description": "Providing on-the-ground commercial leads to manage claims and negotiations."
+        }
+      ]
+    }
+  ],
+  "caseStudies": [
+    {
+      "id": "circular-quay",
+      "title": "Circular Quay Precinct Renewal",
+      "client": "Transport for NSW",
+      "value": "$20B",
+      "completionDate": "2019 / Strategic Delivery",
+      "category": "Urban Precinct Renewal",
+      "summary": "Master planning, commercial advisory, and procurement strategy for Australia's premier harbourfront transit hub.",
+      "description": "Circular Quay is the international gateway to Sydney, welcoming millions of visitors and daily commuters. Bombheq Partners provided strategic advisory and transaction guidance to modernise the multimodal transport interchange, integrating ferry wharves, heavy rail, light rail, and heritage assets into a cohesive, world-class civic precinct.",
+      "image": "https://res.cloudinary.com/detfwst5p/image/upload/v1766658228/bombheq%20webpage/img/case-study_yirpsh.jpg",
+      "keyOutcomes": [
+        "Multimodal transit interchange optimisation across ferry, rail, and pedestrian corridors",
+        "Innovative commercial transaction structure protecting heritage harbor assets",
+        "Seamless alignment across state agencies, commercial lessees, and maritime authorities"
+      ]
+    },
+    {
+      "id": "cross-river-rail",
+      "title": "Cross River Rail",
+      "client": "Queensland Government / Delivery Authority",
+      "value": "$5.4B",
+      "completionDate": "2024 / Underground Rail Delivery",
+      "category": "Major Passenger Rail",
+      "summary": "Queensland's priority infrastructure initiative: a 10.2km rail line including 5.9km of twin tunnels under Brisbane River and CBD.",
+      "description": "Cross River Rail unlocks the bottleneck at the core of the South East Queensland rail network. Bombheq Partners served as strategic and transaction advisers to the Delivery Authority, delivering commercial governance across complex underground station packages, rail integration contracts, and collaborative alliances.",
+      "image": "https://res.cloudinary.com/detfwst5p/image/upload/v1766658226/bombheq%20webpage/img/berlin-5010635_1280_drcldj.jpg",
+      "keyOutcomes": [
+        "Underground tunneling and station cavern commercial risk structuring",
+        "Alliance framework administration ensuring schedule fidelity",
+        "Doubled capacity for the SEQ rail corridor connecting regional communities"
+      ]
+    },
+    {
+      "id": "nsw-fast-rail",
+      "title": "NSW Fast Rail",
+      "client": "Transport for NSW",
+      "value": "$20B",
+      "completionDate": "2024 / High-Speed Corridor Strategy",
+      "category": "High-Speed Rail & Regional Connectivity",
+      "summary": "Strategic policy, economic assessment, and procurement model development for high-speed rail connecting Sydney to regional cities.",
+      "description": "The NSW Fast Rail network aims to transform regional economies by slashing travel times between Sydney, Newcastle, Wollongong, and Canberra. Bombheq Partners provided strategic policy guidance, international procurement benchmarking, and corridor development models to determine the optimal staging and funding pathways.",
+      "image": "https://res.cloudinary.com/detfwst5p/image/upload/v1766658234/bombheq%20webpage/img/fast-rail-1_k097jz.jpg",
+      "keyOutcomes": [
+        "Comprehensive corridor alignment and speed trajectory analysis",
+        "International procurement benchmarking for high-speed rollingstock and civil works",
+        "Defensible economic business cases securing bipartisan investment backing"
+      ]
+    }
+  ],
+  "team": {
+    "kicker": "Meet Our Team",
+    "title": "Meet Our Professional Team Members",
+    "description": "Our people are the best in the business, with real experience and a genuine passion for infrastructure. At Bombheq Partners, we work as a team to solve complex problems, provide wisdom and insight, realise success for our clients, and have fun in the process. Our team have diverse professional and cultural backgrounds allowing us to bring wide-ranging experience and ideas to every client.",
+    "members": [
+      {
+        "id": "member-1",
+        "name": "Dr. Marcus Vance",
+        "role": "Managing Partner",
+        "specialization": "Infrastructure Strategy & Policy",
+        "bio": "25+ years advising Tier-1 sponsors and state governments on transport transitions and mega-project governance.",
+        "image": "https://res.cloudinary.com/detfwst5p/image/upload/v1766658242/bombheq%20webpage/img/team-1_quxptn.jpg",
+        "linkedin": "https://linkedin.com",
+        "twitter": "https://twitter.com"
+      },
+      {
+        "id": "member-2",
+        "name": "Elena Rostova",
+        "role": "Partner",
+        "specialization": "Procurement & Transaction Management",
+        "bio": "Pioneer in collaborative alliance contracts and AI-assisted tender development for transport authorities.",
+        "image": "https://res.cloudinary.com/detfwst5p/image/upload/v1766658241/bombheq%20webpage/img/team-2_l8gqnu.jpg",
+        "linkedin": "https://linkedin.com",
+        "twitter": "https://twitter.com"
+      },
+      {
+        "id": "member-3",
+        "name": "Tariq Al-Mansoor",
+        "role": "Principal Consultant",
+        "specialization": "Dispute Resolution & Expert Witness",
+        "bio": "Court-appointed independent expert witness with forensic expertise across tunnel, bridge, and energy claims.",
+        "image": "https://res.cloudinary.com/detfwst5p/image/upload/v1766658241/bombheq%20webpage/img/team-3_ucrl5y.jpg",
+        "linkedin": "https://linkedin.com",
+        "twitter": "https://twitter.com"
+      },
+      {
+        "id": "member-4",
+        "name": "Sarah Jenkins",
+        "role": "Director",
+        "specialization": "Energy & Decarbonisation Transition",
+        "bio": "Leading clean energy advisory, transmission network structuring, and battery storage commercial frameworks.",
+        "image": "https://res.cloudinary.com/detfwst5p/image/upload/v1766658241/bombheq%20webpage/img/team-4_dpf4b0.jpg",
+        "linkedin": "https://linkedin.com",
+        "twitter": "https://twitter.com"
+      }
+    ]
+  },
+  "careers": {
+    "kicker": "Careers at Bombheq",
+    "title": "We’re engaging the best and brightest to build our high performing and diverse team",
+    "description": "As part of Ricardo, we remain deeply committed to the work we do and the people we work with. We’re looking to engage the best and brightest minds to be part of our high-performing team, contributing to impactful, challenging, and rewarding assignments. If this sounds like something that fits your values and interests, we would be delighted to hear from you.",
+    "affiliationNotice": "Bombheq Partners: A Ricardo Company",
+    "image": "https://res.cloudinary.com/detfwst5p/image/upload/v1766658226/bombheq%20webpage/img/bombheq_with_picture_yjqge8.jpg",
+    "ctaText": "Join the Team",
+    "openPositions": [
+      {
+        "id": "pos-1",
+        "title": "Senior Infrastructure Transaction Specialist",
+        "department": "Transaction & Procurement",
+        "location": "Brisbane / Sydney",
+        "type": "Full-Time"
+      },
+      {
+        "id": "pos-2",
+        "title": "Commercial Advisory Consultant - Rail & Transport",
+        "department": "Commercial Advisory",
+        "location": "Sydney / Hybrid",
+        "type": "Full-Time"
+      },
+      {
+        "id": "pos-3",
+        "title": "Forensic Delay Analyst & Claims Specialist",
+        "department": "Disputes & Expert Witness",
+        "location": "Brisbane / Remote",
+        "type": "Full-Time"
+      },
+      {
+        "id": "pos-4",
+        "title": "Renewable Energy Transition Strategist",
+        "department": "Strategy & Policy",
+        "location": "Brisbane / Melbourne",
+        "type": "Full-Time"
+      }
+    ]
+  },
+  "contact": {
+    "title": "If You Have Any Query, Please Contact Us",
+    "subtitle": "Get in Touch with Bombheq Partners",
+    "intro": "For inquiries regarding infrastructure advisory, transaction management, or expert witness engagements, please reach out to our team. We respond promptly.",
+    "officeAddress": "102 Anderson Drive Greenbank, QLD 4124, Australia",
+    "phone": "+0410-826-339",
+    "email": "Bombheqpartners@gmail.com",
+    "hours": "Mon - Fri : 09 AM - 09 PM",
+    "mapEmbedUrl": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14138.868739981882!2d152.98144078873096!3d-27.710594371536767!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6b9148d423cf9b71%3A0x502a35af3de8890!2sGreenbank%20QLD%204124%2C%20Australia!5e0!3m2!1sen!2sau!4v1710000000000"
+  },
+  "footer": {
+    "tagline": "The world is evolving, and traditional service delivery models are changing. Bombheq Partners delivers engineering clarity, next-generation procurement, and strategic policy leadership.",
+    "copyrightText": "Bombheq Partners. All Rights Reserved. A Ricardo Company.",
+    "quickLinks": [
+      { "label": "Our People", "path": "team" },
+      { "label": "Case Studies", "path": "cases" },
+      { "label": "Our Services", "path": "services" },
+      { "label": "Strategy Advice", "path": "strategy" },
+      { "label": "Transaction Management", "path": "transaction" },
+      { "label": "Contact Us", "path": "contact" }
+    ]
+  }
+}

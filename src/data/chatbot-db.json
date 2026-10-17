@@ -1,0 +1,352 @@
+{
+  "settings": {
+    "botName": "Bombheq Advisor AI",
+    "tagline": "Infrastructure & Commercial Advisory Intelligence",
+    "welcomeMessage": "Welcome to Bombheq Partners. I am your AI Advisory Assistant. How can I assist you with our engineering advisory, next-generation procurement, or mega-project delivery services today?",
+    "botPersona": "professional_consulting",
+    "escalationThreshold": "on_frustration",
+    "autoFeedbackPrompt": true,
+    "systemPromptAddendum": "You are the official AI Client Service Assistant for Bombheq Partners, an engineering and infrastructure advisory consultancy affiliated with Ricardo. Always provide courteous, precise, and verified facts. Never invent contract amounts, private client secrets, or fake statuses. Offer to escalate to our human partners if questions require formal commercial engagement.",
+    "activeAgents": [
+      {
+        "id": "agent-marcus",
+        "name": "Dr. Marcus Vance",
+        "role": "Managing Partner & Infrastructure Advisory Lead",
+        "avatar": "https://res.cloudinary.com/detfwst5p/image/upload/v1766658242/bombheq%20webpage/img/team-1_quxptn.jpg",
+        "status": "online"
+      },
+      {
+        "id": "agent-elena",
+        "name": "Elena Rostova",
+        "role": "Partner - Procurement & Commercial Strategy",
+        "avatar": "https://res.cloudinary.com/detfwst5p/image/upload/v1766658241/bombheq%20webpage/img/team-2_l8gqnu.jpg",
+        "status": "online"
+      },
+      {
+        "id": "agent-tariq",
+        "name": "Tariq Al-Mansoor",
+        "role": "Principal - Dispute Resolution & Expert Witness",
+        "avatar": "https://res.cloudinary.com/detfwst5p/image/upload/v1766658241/bombheq%20webpage/img/team-3_ucrl5y.jpg",
+        "status": "busy"
+      }
+    ]
+  },
+  "knowledgeBase": [
+    {
+      "id": "kb-about",
+      "category": "services",
+      "question": "What is Bombheq Partners and what do you do?",
+      "answer": "Bombheq Partners is a specialized consulting engineering and infrastructure advisory firm. As part of Ricardo, we work hand-in-hand with governments, public transport authorities, and private sponsors to deliver successful infrastructure solutions across Strategy & Policy, Procurement & Transaction Management, Contract Disputes, and Commercial Governance.",
+      "keywords": [
+        "about",
+        "who",
+        "overview",
+        "ricardo",
+        "company",
+        "firm"
+      ]
+    },
+    {
+      "id": "kb-strategy",
+      "category": "services",
+      "question": "What does your Strategy, Portfolio and Policy Advice service include?",
+      "answer": "We assist governments and large corporate clients in developing effective policy and strategy responses to emerging challenges. This includes infrastructure planning, investment prioritization, portfolio optimization, economic assessment, and governance frameworks to provide direction under uncertainty. In 2024 alone, our advised project portfolio exceeded ~$750M.",
+      "keywords": [
+        "strategy",
+        "policy",
+        "portfolio",
+        "governance",
+        "investment",
+        "planning"
+      ]
+    },
+    {
+      "id": "kb-transaction",
+      "category": "services",
+      "question": "How does Bombheq Partners approach Procurement and Transaction Management?",
+      "answer": "We are at the leading edge of procurement, pioneering collaborative contracting alliances and employing data-rich digital environments. We use artificial intelligence to aid documentation and tender evaluation, supported by our extensive library of commercial and risk models to help clients differentiate between real market issues and contractors' negotiating positions.",
+      "keywords": [
+        "transaction",
+        "procurement",
+        "contracts",
+        "tenders",
+        "alliance",
+        "ai",
+        "collaborative"
+      ]
+    },
+    {
+      "id": "kb-disputes",
+      "category": "services",
+      "question": "What dispute resolution and expert witness services do you provide?",
+      "answer": "We provide independent forensic delay analysis, disruption modeling, and court-admissible expert witness testimony for major contractual claims and arbitrations. We also act as advisers on Dispute Avoidance Boards (DAB) and assist in mediation to resolve complex heavy civil, rail, and energy project claims.",
+      "keywords": [
+        "disputes",
+        "claims",
+        "expert witness",
+        "delay",
+        "arbitration",
+        "forensic",
+        "court"
+      ]
+    },
+    {
+      "id": "kb-commercial",
+      "category": "services",
+      "question": "What is your Commercial Advisory and Delivery Governance service?",
+      "answer": "Our commercial advisory sets clients up for delivery certainty through bespoke risk allocation models, Gateway reviews, and active on-the-ground commercial administration. We ensure participants remain focused on outcomes rather than red tape, protecting client value from inception through construction closeout.",
+      "keywords": [
+        "commercial",
+        "delivery",
+        "risk",
+        "governance",
+        "administration",
+        "gateway"
+      ]
+    },
+    {
+      "id": "kb-projects-rail",
+      "category": "projects",
+      "question": "What are your key landmark infrastructure projects?",
+      "answer": "Our landmark engagements include: 1) NSW Fast Rail ($20B) connecting Sydney to regional centers with speed trajectory modeling and procurement benchmarking; 2) Cross River Rail ($5.4B), Queensland's underground rail tunnels under the Brisbane River and CBD; 3) Circular Quay Precinct Renewal ($20B), revitalizing Sydney's premier multimodal ferry and rail transport hub.",
+      "keywords": [
+        "projects",
+        "fast rail",
+        "cross river rail",
+        "circular quay",
+        "nsw",
+        "queensland",
+        "track record"
+      ]
+    },
+    {
+      "id": "kb-contact",
+      "category": "contact",
+      "question": "Where is Bombheq Partners located and how can I contact you?",
+      "answer": "Our head office is located at 102 Anderson Drive Greenbank, QLD 4124, Australia. You can call us directly at +0410-826-339, or email us at Bombheqpartners@gmail.com. Our office hours are Monday to Friday from 09:00 AM to 09:00 PM AEST.",
+      "keywords": [
+        "contact",
+        "phone",
+        "email",
+        "address",
+        "location",
+        "hours",
+        "office",
+        "greenbank"
+      ]
+    },
+    {
+      "id": "kb-consultation",
+      "category": "contact",
+      "question": "How can I book a strategic consultation or procurement review?",
+      "answer": "You can request a consultation directly through our website's Contact section, or by leaving your name, email, and project scope right here in this chat. We will promptly connect you with a designated Partner (Dr. Marcus Vance or Elena Rostova) for an exploratory discussion.",
+      "keywords": [
+        "book",
+        "consultation",
+        "meeting",
+        "schedule",
+        "hire",
+        "engage",
+        "request"
+      ]
+    },
+    {
+      "id": "kb-probity",
+      "category": "pricing_probity",
+      "question": "What are your probity and confidentiality protocols?",
+      "answer": "As a Ricardo company, Bombheq Partners adheres to strict international probity, ethics, and conflict-of-interest standards. All government and commercial tender disclosures are safeguarded under strict NDAs and dedicated clean-team data enclosures.",
+      "keywords": [
+        "probity",
+        "confidentiality",
+        "nda",
+        "ethics",
+        "security",
+        "conflict of interest"
+      ]
+    },
+    {
+      "id": "kb-careers",
+      "category": "faq",
+      "question": "Is Bombheq Partners currently hiring?",
+      "answer": "Yes! As part of Ricardo, we are seeking bright and ambitious professionals. Current open roles include: Senior Infrastructure Transaction Specialist, Commercial Advisory Consultant (Rail & Transport), Forensic Delay Analyst, and Renewable Energy Transition Strategist. Inquire via our Careers section or contact us directly.",
+      "keywords": [
+        "careers",
+        "jobs",
+        "hiring",
+        "openings",
+        "join",
+        "vacancies"
+      ]
+    }
+  ],
+  "conversations": {
+    "conv-init-sample": {
+      "id": "conv-init-sample",
+      "clientId": "client-guest-1",
+      "clientName": "Sarah Lin",
+      "clientEmail": "s.lin@transport.nsw.gov.au",
+      "status": "resolved",
+      "createdAt": "2026-10-16T22:45:12.684Z",
+      "updatedAt": "2026-10-17T02:45:12.685Z",
+      "primaryIntent": "procurement_guidance",
+      "sentimentSummary": "positive",
+      "summary": "Inquired regarding collaborative alliances and digital procurement models for regional rail corridor upgrade.",
+      "rating": 5,
+      "feedback": "Exceptionally thorough advice on collaborative contracting and risk allocation models.",
+      "assignedAgent": "Dr. Marcus Vance",
+      "messages": [
+        {
+          "id": "msg-1",
+          "sender": "user",
+          "text": "Hello, what experience does Bombheq have with high speed passenger rail procurement?",
+          "timestamp": "2026-10-16T22:45:12.685Z",
+          "sentiment": "neutral",
+          "intent": "procurement_guidance"
+        },
+        {
+          "id": "msg-2",
+          "sender": "assistant",
+          "text": "Bombheq Partners advised on the NSW Fast Rail strategic program ($20B), conducting international procurement benchmarking and corridor speed trajectory modeling. We also advise on Queensland's $5.4B Cross River Rail underground stations.",
+          "timestamp": "2026-10-16T22:51:12.685Z",
+          "suggestedActions": [
+            "Book Partner Consultation",
+            "View Case Studies",
+            "Contact Office"
+          ]
+        },
+        {
+          "id": "msg-3",
+          "sender": "user",
+          "text": "That is great. Can we schedule an exploratory discussion with Dr. Marcus Vance?",
+          "timestamp": "2026-10-17T00:45:12.685Z",
+          "sentiment": "positive",
+          "intent": "consultation_request"
+        },
+        {
+          "id": "msg-4",
+          "sender": "agent",
+          "senderName": "Dr. Marcus Vance",
+          "text": "Hello Sarah, I would be pleased to speak with you regarding your rail procurement schedule. Our team will coordinate an introductory session for this Tuesday.",
+          "timestamp": "2026-10-17T02:45:12.685Z"
+        }
+      ]
+    },
+    "conv-1792277118831-5fd1i": {
+      "id": "conv-1792277118831-5fd1i",
+      "clientId": "client-1792277118831",
+      "clientName": "Visitor",
+      "status": "ai_handling",
+      "createdAt": "2026-10-17T22:45:18.831Z",
+      "updatedAt": "2026-10-17T22:45:27.976Z",
+      "messages": [
+        {
+          "id": "msg-1792277118831-user",
+          "sender": "user",
+          "text": "What experience do you have with rail procurement and alliance contracting?",
+          "timestamp": "2026-10-17T22:45:18.831Z",
+          "intent": "procurement_guidance",
+          "sentiment": "neutral"
+        },
+        {
+          "id": "msg-1792277127976-assistant",
+          "sender": "assistant",
+          "senderName": "Bombheq Advisor AI",
+          "text": "At Bombheq Partners, rail procurement and collaborative alliance contracting are core strengths within our **Procurement and Transaction Management** practice. \n\nHere is an overview of our expertise and track record in this space:\n\n### Collaborative Alliances & Procurement Innovation\n* **Alliance Contracting & Frameworks:** We pioneer collaborative contracting models and alliances, structuring commercial frameworks that align the objectives of public transport authorities and delivery partners while driving delivery certainty and mitigating dispute risk.\n* **Digital & AI-Assisted Evaluation:** We deploy data-rich digital environments and AI-assisted tender documentation and evaluation tools, backed by extensive commercial and risk models that help clients differentiate between genuine market constraints and contractor negotiating postures.\n* **Risk Allocation & Packaging:** We design bespoke risk allocation models and commercial structures tailored to complex, multi-interface rail and civils packages.\n\n### Landmark Rail Engagements\nOur advisory teams have contributed to some of Australasia’s most complex rail programs, including:\n* **NSW Fast Rail ($20B):** Provided strategic corridor modeling and international procurement benchmarking to define delivery and transaction strategies.\n* **Cross River Rail ($5.4B):** Advised on Queensland’s transformational underground rail tunnels beneath the Brisbane River and CBD.\n* **Circular Quay Precinct Renewal ($20B):** Advised on the complex revitalisation of Sydney’s multimodal heavy rail and ferry transport interchange.\n\nIf you are planning an upcoming rail transaction or considering an alliance contracting model, we would be pleased to arrange an exploratory discussion with one of our Partners, such as **Dr. Marcus Vance** or **Elena Rostova**. \n\nWould you like to share your project scope or contact details to arrange a consultation?",
+          "timestamp": "2026-10-17T22:45:27.976Z",
+          "suggestedActions": [
+            "Alliance Contracting",
+            "AI Tender Tools",
+            "Book Partner Review"
+          ],
+          "isEscalated": false
+        }
+      ],
+      "primaryIntent": "procurement_guidance",
+      "sentimentSummary": "neutral"
+    },
+    "conv-1792277128678-84371": {
+      "id": "conv-1792277128678-84371",
+      "clientId": "client-1792277128678",
+      "clientName": "Visitor",
+      "status": "ai_handling",
+      "createdAt": "2026-10-17T22:45:28.678Z",
+      "updatedAt": "2026-10-17T22:45:31.250Z",
+      "messages": [
+        {
+          "id": "msg-1792277128679-user",
+          "sender": "user",
+          "text": "Hello, what are your office hours?",
+          "timestamp": "2026-10-17T22:45:28.678Z",
+          "intent": "general_inquiry",
+          "sentiment": "neutral"
+        },
+        {
+          "id": "msg-1792277131250-assistant",
+          "sender": "assistant",
+          "senderName": "Bombheq Advisor AI",
+          "text": "Hello! \n\nOur office hours are **Monday through Friday, from 09:00 AM to 09:00 PM AEST**. \n\nPlease let me know if you would like to arrange a consultation or if you have any questions regarding our advisory services.",
+          "timestamp": "2026-10-17T22:45:31.250Z",
+          "suggestedActions": [
+            "Our Advisory Services",
+            "Landmark Projects",
+            "Speak with Specialist"
+          ],
+          "isEscalated": false
+        }
+      ],
+      "primaryIntent": "general_inquiry",
+      "sentimentSummary": "neutral"
+    },
+    "conv-1792277141021-olb5t": {
+      "id": "conv-1792277141021-olb5t",
+      "clientId": "client-1792277141021",
+      "clientName": "Visitor",
+      "status": "resolved",
+      "createdAt": "2026-10-17T22:45:41.021Z",
+      "updatedAt": "2026-10-17T22:45:57.815Z",
+      "messages": [
+        {
+          "id": "msg-1792277141021-user",
+          "sender": "user",
+          "text": "I am frustrated with this delay claim dispute, I need to talk to a human partner right now",
+          "timestamp": "2026-10-17T22:45:41.021Z",
+          "intent": "dispute_resolution",
+          "sentiment": "frustrated"
+        },
+        {
+          "id": "msg-1792277145087-assistant",
+          "sender": "assistant",
+          "senderName": "Bombheq Advisor AI",
+          "text": "I completely understand your frustration—delay claims and contractual disputes can be immensely stressful and require urgent, decisive action. \n\nI will connect you directly with one of our senior partners specializing in contract disputes and forensic delay analysis (**Dr. Marcus Vance**, **Elena Rostova**, or **Tariq Al-Mansoor**).\n\nTo speak with a partner right away:\n* **Direct Phone:** **+0410-826-339** *(Available Mon–Fri, 9:00 AM – 9:00 PM AEST)*\n* **Urgent Email:** **Bombheqpartners@gmail.com**\n\nAlternatively, if you leave your **name, phone number, and brief project details** right here, I will immediately flag this for priority escalation and have a partner reach out to you directly.",
+          "timestamp": "2026-10-17T22:45:45.087Z",
+          "suggestedActions": [
+            "Confirm Escalation",
+            "Leave Project Brief",
+            "Direct Phone Call"
+          ],
+          "isEscalated": true
+        },
+        {
+          "id": "msg-1792277150208-agent",
+          "sender": "agent",
+          "senderName": "Dr. Marcus Vance",
+          "text": "Hello, this is Dr. Marcus Vance. I have taken over this thread and am reviewing your delay claim parameters now.",
+          "timestamp": "2026-10-17T22:45:50.208Z"
+        },
+        {
+          "id": "msg-1792277154189-rating",
+          "sender": "system",
+          "text": "This advisory inquiry has been marked as resolved. We appreciate your feedback—how would you rate your support experience today?",
+          "timestamp": "2026-10-17T22:45:54.189Z",
+          "ratingPrompt": true
+        }
+      ],
+      "primaryIntent": "dispute_resolution",
+      "sentimentSummary": "frustrated",
+      "summary": "Client requested escalation or experienced frustrated sentiment. Inquiry topic: dispute_resolution.",
+      "assignedAgent": "Dr. Marcus Vance",
+      "rating": 5,
+      "feedback": "Dr. Vance intervened swiftly and resolved our claim direction."
+    }
+  }
+}
