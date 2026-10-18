@@ -5,7 +5,6 @@ import {
   Phone, 
   Mail, 
   Clock, 
-  SlidersHorizontal, 
   Menu, 
   X, 
   ChevronRight,
@@ -22,7 +21,7 @@ interface NavbarProps {
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ onOpenAdmin }) => {
-  const { content, activeView, setActiveView, toggleCms, isCmsOpen, setIsSearchOpen } = useContent();
+  const { content, activeView, setActiveView, setIsSearchOpen } = useContent();
   const { theme, toggleTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -113,7 +112,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAdmin }) => {
               })}
             </nav>
 
-            {/* Zone 3: Global Search, Theme Toggle, CMS Switch & Primary Action */}
+            {/* Zone 3: Global Search, Theme Toggle & Primary Action */}
             <div className="flex items-center gap-2 sm:gap-2.5 shrink-0">
               
               {/* Global Site Search Button (Cmd/Ctrl + K) */}
@@ -179,25 +178,10 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAdmin }) => {
                 </button>
               )}
 
-              {/* Headless CMS / JSON Editor Toggle */}
-              <button
-                onClick={toggleCms}
-                className={`flex items-center gap-2 px-3 py-2 text-xs font-medium rounded-lg border transition-all cursor-pointer ${
-                  isCmsOpen 
-                    ? 'bg-[#245237] text-white border-[#245237] shadow-sm' 
-                    : 'bg-emerald-50 dark:bg-emerald-950/40 text-[#245237] dark:text-emerald-400 border-emerald-200 dark:border-emerald-800/80 hover:bg-emerald-100 dark:hover:bg-emerald-900/60'
-                }`}
-                title="Open Headless CMS & JSON live editor"
-              >
-                <SlidersHorizontal className="w-3.5 h-3.5" />
-                <span className="hidden sm:inline">CMS & JSON</span>
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-              </button>
-
-              {/* Primary Action Button with 3D Depth */}
+              {/* Primary Action Button with 3D Depth (Desktop only) */}
               <button
                 onClick={() => handleNavClick('contact')}
-                className="px-4 py-2 text-xs font-semibold text-white bg-[#245237] hover:bg-[#1b3e2a] dark:bg-[#21afc2] dark:hover:bg-[#1994a5] dark:text-[#0b111e] rounded-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0 whitespace-nowrap shrink-0 cursor-pointer shadow-xs hover:shadow-md font-medium"
+                className="hidden lg:inline-flex items-center justify-center px-4 py-2 text-xs font-semibold text-white bg-[#245237] hover:bg-[#1b3e2a] dark:bg-[#21afc2] dark:hover:bg-[#1994a5] dark:text-[#0b111e] rounded-lg transition-all transform hover:-translate-y-0.5 active:translate-y-0 whitespace-nowrap shrink-0 cursor-pointer shadow-xs hover:shadow-md font-medium"
               >
                 {content.navigation.ctaButton.label}
               </button>
@@ -281,24 +265,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAdmin }) => {
                 <span>Agent Operations Center</span>
               </button>
             )}
-
-            <button
-              onClick={() => {
-                toggleCms();
-                setMobileMenuOpen(false);
-              }}
-              className="w-full flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-medium bg-emerald-50 dark:bg-emerald-950/40 text-[#245237] dark:text-emerald-400 border border-emerald-200 dark:border-emerald-800 rounded-lg cursor-pointer"
-            >
-              <SlidersHorizontal className="w-4 h-4" />
-              <span>Headless CMS & JSON Editor</span>
-            </button>
-
-            <button
-              onClick={() => handleNavClick('contact')}
-              className="w-full px-4 py-2.5 text-sm font-semibold text-white bg-[#245237] dark:bg-[#21afc2] dark:text-[#0b111e] rounded-lg text-center cursor-pointer shadow-xs"
-            >
-              {content.navigation.ctaButton.label}
-            </button>
           </div>
         </div>
       )}

@@ -3,6 +3,7 @@ import { useContent } from '../../context/ContentContext';
 import { Linkedin, Twitter, ArrowRight, Radar } from 'lucide-react';
 import { Card3D } from '../ui/Card3D';
 import { PerspectiveHeading } from '../ui/PerspectiveText';
+import { ScrollReveal } from '../ui/ScrollReveal';
 import { TeamSkillMatrix, MiniMemberRadar } from './TeamSkillMatrix';
 
 export const TeamSection: React.FC = () => {
@@ -30,11 +31,18 @@ export const TeamSection: React.FC = () => {
   };
 
   return (
-    <section className="py-20 lg:py-24 bg-[#f6f7fc] dark:bg-[#070d18] border-b border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300">
+    <section
+      id="team-section"
+      className="py-20 lg:py-24 bg-[#f6f7fc] dark:bg-[#070d18] border-b border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300 overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="text-center max-w-2xl mx-auto mb-16">
+        <ScrollReveal
+          variant="fade-up"
+          duration={700}
+          className="text-center max-w-2xl mx-auto mb-16"
+        >
           <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#245237] dark:text-[#21afc2] mb-2">
             <span>{team.kicker}</span>
             <span aria-hidden="true" className="text-slate-300 dark:text-slate-700">·</span>
@@ -50,23 +58,29 @@ export const TeamSection: React.FC = () => {
           <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
             {team.description}
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* 4-Column 3D Team Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-          {members.map(member => {
+          {members.map((member, idx) => {
             const isSelected = selectedMemberId === member.id || focusedItemId === member.id;
             const topSkills = [...(member.skillMatrix || [])]
               .sort((a, b) => b.score - a.score)
               .slice(0, 2);
 
             return (
-              <Card3D
+              <ScrollReveal
                 key={member.id}
-                maxTilt={7}
-                scale={1.02}
-                className="w-full"
+                variant="fade-up"
+                delay={idx * 95}
+                duration={700}
+                className="h-full"
               >
+                <Card3D
+                  maxTilt={7}
+                  scale={1.02}
+                  className="w-full h-full"
+                >
                 <div
                   id={`search-target-${member.id}`}
                   className={`group h-full bg-white dark:bg-[#111C2E] rounded-2xl border overflow-hidden shadow-xs hover:shadow-xl dark:hover:border-[#21afc2]/50 transition-all duration-300 flex flex-col ${
@@ -197,22 +211,25 @@ export const TeamSection: React.FC = () => {
                     </div>
                   </div>
                 </div>
-              </Card3D>
+                </Card3D>
+              </ScrollReveal>
             );
           })}
         </div>
 
         {/* Interactive Recharts + D3 Skill Matrix Workbench */}
         {members.length > 0 && (
-          <TeamSkillMatrix
-            members={members}
-            selectedMemberId={selectedMemberId}
-            onSelectMember={setSelectedMemberId}
-          />
+          <ScrollReveal variant="blur-up" delay={120} duration={750}>
+            <TeamSkillMatrix
+              members={members}
+              selectedMemberId={selectedMemberId}
+              onSelectMember={setSelectedMemberId}
+            />
+          </ScrollReveal>
         )}
 
         {/* View all team CTA */}
-        <div className="mt-14 text-center">
+        <ScrollReveal variant="fade-up" delay={140} className="mt-14 text-center">
           <button
             onClick={() => {
               setActiveView('team');
@@ -223,7 +240,7 @@ export const TeamSection: React.FC = () => {
             <span>Learn More About Our People</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
-        </div>
+        </ScrollReveal>
 
       </div>
     </section>

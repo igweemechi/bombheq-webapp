@@ -3,21 +3,29 @@ import { useContent } from '../../context/ContentContext';
 import { CheckCircle2, ArrowRight, ShieldCheck, Building2, TrendingUp } from 'lucide-react';
 import { Card3D } from '../ui/Card3D';
 import { PerspectiveHeading } from '../ui/PerspectiveText';
-import { motion } from 'motion/react';
+import { ScrollReveal } from '../ui/ScrollReveal';
 
 export const OverviewSection: React.FC = () => {
   const { content, setActiveView } = useContent();
   const { valueProposition } = content;
 
   return (
-    <section className="py-20 lg:py-24 bg-white dark:bg-[#0B111E] border-b border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300">
+    <section
+      id="overview-section"
+      className="py-20 lg:py-24 bg-white dark:bg-[#0B111E] border-b border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300 overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* 2-Column Split: Interactive 3D Visual & Narrative */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* Column 1: Image Anchor with 3D Tilt & Floating Depth Badge */}
-          <div className="lg:col-span-5 relative perspective-1000">
+          <ScrollReveal
+            variant="fade-right"
+            delay={60}
+            duration={750}
+            className="lg:col-span-5 relative perspective-1000"
+          >
             <Card3D maxTilt={7} scale={1.02} className="w-full">
               <div className="relative rounded-2xl overflow-hidden bg-slate-100 dark:bg-slate-800 shadow-xl dark:shadow-2xl border border-slate-200/80 dark:border-slate-700/80 aspect-4/3 lg:aspect-auto lg:h-[500px]">
                 <img
@@ -47,10 +55,15 @@ export const OverviewSection: React.FC = () => {
                 </div>
               </div>
             </Card3D>
-          </div>
+          </ScrollReveal>
 
           {/* Column 2: Narrative with Perspective Typography */}
-          <div className="lg:col-span-7 flex flex-col justify-center">
+          <ScrollReveal
+            variant="fade-left"
+            delay={160}
+            duration={750}
+            className="lg:col-span-7 flex flex-col justify-center"
+          >
             
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#245237] dark:text-[#21afc2] mb-3">
               <span>{valueProposition.badge}</span>
@@ -105,19 +118,18 @@ export const OverviewSection: React.FC = () => {
                 Meet Our Advisors →
               </button>
             </div>
-          </div>
+          </ScrollReveal>
         </div>
 
         {/* Full-width 4-Column 3D Metric Strip */}
         <div className="mt-16 pt-12 border-t border-slate-200 dark:border-slate-800">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
             {valueProposition.metrics.map((metric, mIdx) => (
-              <motion.div
+              <ScrollReveal
                 key={metric.id}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: mIdx * 0.08 }}
+                variant="scale-up"
+                delay={mIdx * 90}
+                duration={650}
                 className="p-5 rounded-xl bg-slate-50 dark:bg-[#111C2E] border border-slate-200/80 dark:border-slate-800/80 hover:border-[#21afc2]/50 transition-all transform hover:-translate-y-1 shadow-2xs hover:shadow-md flex flex-col"
               >
                 <span className="text-3xl sm:text-4xl font-extrabold text-[#15233c] dark:text-white tracking-tight tabular-nums font-display">
@@ -129,7 +141,7 @@ export const OverviewSection: React.FC = () => {
                 <span className="text-xs text-slate-500 dark:text-slate-400 mt-0.5">
                   {metric.subtext}
                 </span>
-              </motion.div>
+              </ScrollReveal>
             ))}
           </div>
         </div>

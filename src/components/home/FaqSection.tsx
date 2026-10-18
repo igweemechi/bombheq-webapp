@@ -2,6 +2,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { useContent } from '../../context/ContentContext';
 import { FaqItem } from '../../types/content';
 import { PerspectiveHeading } from '../ui/PerspectiveText';
+import { ScrollReveal } from '../ui/ScrollReveal';
 import { motion, AnimatePresence } from 'motion/react';
 import {
   ChevronDown,
@@ -130,11 +131,15 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onOpenChat }) => {
   return (
     <section
       id="faq-section"
-      className="py-20 lg:py-24 bg-white dark:bg-[#0b1320] border-b border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300"
+      className="py-20 lg:py-24 bg-white dark:bg-[#0b1320] border-b border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300 overflow-hidden"
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6">
+        <ScrollReveal
+          variant="fade-up"
+          duration={700}
+          className="flex flex-col lg:flex-row lg:items-end justify-between mb-12 gap-6"
+        >
           <div className="max-w-2xl">
             <div className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#245237] dark:text-[#21afc2] mb-2">
               <HelpCircle className="w-3.5 h-3.5" />
@@ -151,10 +156,15 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onOpenChat }) => {
           <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 max-w-md leading-relaxed">
             Explore how our senior engineering and commercial specialists structure business cases, manage multi-billion-dollar transactions, and safeguard project delivery.
           </p>
-        </div>
+        </ScrollReveal>
 
         {/* Category Filter Tabs & Search Bar */}
-        <div className="mb-10 flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-slate-200/80 dark:border-slate-800">
+        <ScrollReveal
+          variant="fade-up"
+          delay={80}
+          duration={700}
+          className="mb-10 flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-6 border-b border-slate-200/80 dark:border-slate-800"
+        >
           {/* Category Segmented Buttons */}
           <div className="flex flex-wrap items-center gap-2">
             {CATEGORIES.map(category => {
@@ -223,12 +233,17 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onOpenChat }) => {
               <span>{allFilteredOpen ? 'Collapse All' : 'Expand All'}</span>
             </button>
           </div>
-        </div>
+        </ScrollReveal>
 
         {/* 12-Column Asymmetric Layout: 4-Col Consulting Process Blueprint + 8-Col Accordion */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start">
           {/* Left 4 Columns: Consulting Process & Direct Briefing Card */}
-          <div className="lg:col-span-4 space-y-6 lg:sticky lg:top-24">
+          <ScrollReveal
+            variant="fade-right"
+            delay={110}
+            duration={750}
+            className="lg:col-span-4 space-y-6 lg:sticky lg:top-24"
+          >
             <div className="p-6 rounded-2xl bg-[#f6f7fc] dark:bg-[#111C2E] border border-slate-200/90 dark:border-slate-800 shadow-xs">
               <div className="text-[11px] font-bold uppercase tracking-wider text-[#245237] dark:text-[#21afc2] mb-1">
                 Standard Engagement Architecture
@@ -285,10 +300,15 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onOpenChat }) => {
                 )}
               </div>
             </div>
-          </div>
+          </ScrollReveal>
 
           {/* Right 8 Columns: Interactive Accordion List */}
-          <div className="lg:col-span-8 space-y-3.5">
+          <ScrollReveal
+            variant="fade-left"
+            delay={160}
+            duration={750}
+            className="lg:col-span-8 space-y-3.5"
+          >
             {filteredFaqs.length === 0 ? (
               <div className="p-10 rounded-2xl bg-slate-50 dark:bg-[#111C2E] border border-slate-200/80 dark:border-slate-800 text-center">
                 <p className="text-sm font-bold text-[#15233c] dark:text-white mb-1">
@@ -410,7 +430,7 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onOpenChat }) => {
                               </div>
                             )}
 
-                            {/* Deep-Link Action Footer */}
+                             {/* Deep-Link Action Footer */}
                             {faq.relatedView && (
                               <div className="mt-4 flex items-center justify-between gap-4 pt-2">
                                 <span className="text-[11px] font-mono text-slate-400 dark:text-slate-500">
@@ -437,7 +457,7 @@ export const FaqSection: React.FC<FaqSectionProps> = ({ onOpenChat }) => {
                 );
               })
             )}
-          </div>
+          </ScrollReveal>
         </div>
       </div>
     </section>

@@ -3,19 +3,28 @@ import { useContent } from '../../context/ContentContext';
 import { ArrowRight, MapPin } from 'lucide-react';
 import { Card3D } from '../ui/Card3D';
 import { PerspectiveHeading } from '../ui/PerspectiveText';
+import { ScrollReveal } from '../ui/ScrollReveal';
 
 export const CareersSection: React.FC = () => {
   const { content, setActiveView } = useContent();
   const { careers } = content;
 
   return (
-    <section className="py-20 lg:py-24 bg-white dark:bg-[#0B111E] border-b border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300">
+    <section
+      id="careers-section"
+      className="py-20 lg:py-24 bg-white dark:bg-[#0B111E] border-b border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300 overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
           
           {/* Image & Ricardo Affiliation with 3D Tilt */}
-          <div className="lg:col-span-5 relative perspective-1000">
+          <ScrollReveal
+            variant="fade-right"
+            delay={60}
+            duration={750}
+            className="lg:col-span-5 relative perspective-1000"
+          >
             <Card3D maxTilt={7} scale={1.02} className="w-full">
               <div className="relative rounded-2xl overflow-hidden aspect-4/3 lg:aspect-auto lg:h-[500px] shadow-xl dark:shadow-2xl border border-slate-200/80 dark:border-slate-700 bg-slate-100 dark:bg-slate-800">
                 <img
@@ -39,10 +48,15 @@ export const CareersSection: React.FC = () => {
                 </div>
               </div>
             </Card3D>
-          </div>
+          </ScrollReveal>
 
           {/* Careers Narrative & Open Positions */}
-          <div className="lg:col-span-7 flex flex-col justify-center">
+          <ScrollReveal
+            variant="fade-left"
+            delay={160}
+            duration={750}
+            className="lg:col-span-7 flex flex-col justify-center"
+          >
             
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#245237] dark:text-[#21afc2] mb-3">
               <span>{careers.kicker}</span>
@@ -115,7 +129,7 @@ export const CareersSection: React.FC = () => {
               </button>
             </div>
 
-          </div>
+          </ScrollReveal>
         </div>
 
       </div>

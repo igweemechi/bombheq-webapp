@@ -1,7 +1,7 @@
 import React from 'react';
 import { useContent } from '../../context/ContentContext';
 import { useTheme } from '../../context/ThemeContext';
-import { MapPin, Phone, Mail, SlidersHorizontal, ArrowUp, Sun, Moon, ShieldCheck, Bot } from 'lucide-react';
+import { MapPin, Phone, Mail, ArrowUp, Sun, Moon, ShieldCheck, Bot } from 'lucide-react';
 
 interface FooterProps {
   onOpenAdmin?: () => void;
@@ -9,7 +9,7 @@ interface FooterProps {
 }
 
 export const Footer: React.FC<FooterProps> = ({ onOpenAdmin, onOpenChat }) => {
-  const { content, setActiveView, toggleCms } = useContent();
+  const { content, setActiveView } = useContent();
   const { theme, toggleTheme } = useTheme();
 
   const handleNavClick = (viewId: string) => {
@@ -126,14 +126,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin, onOpenChat }) => {
                   <span>Agent Desk</span>
                 </button>
               )}
-
-              <button
-                onClick={toggleCms}
-                className="inline-flex items-center gap-2 text-[11px] text-[#21afc2] hover:text-white transition-colors border border-slate-700/80 rounded-lg px-3 py-1.5 cursor-pointer bg-slate-900/60 dark:bg-black/40 hover:bg-slate-800"
-              >
-                <SlidersHorizontal className="w-3.5 h-3.5" />
-                <span>CMS Content & JSON Sync</span>
-              </button>
 
               <button
                 onClick={toggleTheme}

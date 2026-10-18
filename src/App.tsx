@@ -17,16 +17,15 @@ import { TransactionPage } from './components/pages/TransactionPage';
 import { CaseStudiesPage } from './components/pages/CaseStudiesPage';
 import { TeamPage } from './components/pages/TeamPage';
 import { ContactPage } from './components/pages/ContactPage';
-import { ContentManagerDrawer } from './components/cms/ContentManagerDrawer';
 import { PageTransition } from './components/ui/PageTransition';
 import { ScrollProgressBar } from './components/ui/ScrollProgressBar';
 import { ChatbotWidget } from './components/chat/ChatbotWidget';
 import { ChatbotAdminDashboard } from './components/chat/ChatbotAdminDashboard';
 import { GlobalSearchModal } from './components/search/GlobalSearchModal';
-import { SlidersHorizontal, CheckCircle2 } from 'lucide-react';
+import { CheckCircle2 } from 'lucide-react';
 
 const MainLayout: React.FC = () => {
-  const { activeView, toggleCms, toastMessage } = useContent();
+  const { activeView, toastMessage } = useContent();
   const [isChatOpen, setIsChatOpen] = useState(false);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
 
@@ -92,22 +91,6 @@ const MainLayout: React.FC = () => {
         onOpenChat={() => setIsChatOpen(true)}
         onOpenAdmin={() => setIsAdminOpen(true)}
       />
-
-      {/* Slide-out CMS & JSON Editor */}
-      <ContentManagerDrawer />
-
-      {/* Floating 3D CMS Launcher on Bottom Left (Leaves Bottom Right for Chatbot) */}
-      <div className="fixed bottom-6 left-6 z-30">
-        <button
-          onClick={toggleCms}
-          className="flex items-center gap-2.5 px-4 py-2.5 bg-[#15233c] hover:bg-[#245237] dark:bg-[#111C2E] dark:hover:bg-[#17263E] text-white transition-all transform hover:-translate-y-1 hover:scale-103 active:translate-y-0 rounded-full shadow-xl hover:shadow-2xl border border-slate-700/60 dark:border-slate-700 cursor-pointer group backdrop-blur-md"
-          title="Open Headless CMS & JSON Manager"
-        >
-          <SlidersHorizontal className="w-4 h-4 text-[#21afc2] group-hover:rotate-45 transition-transform" />
-          <span className="text-xs font-semibold tracking-wide">CMS Editor</span>
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-        </button>
-      </div>
 
       {/* Intelligent AI Customer Support Bot Widget (Bottom Right) */}
       <ChatbotWidget

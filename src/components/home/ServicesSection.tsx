@@ -10,7 +10,7 @@ import {
 } from 'lucide-react';
 import { Card3D } from '../ui/Card3D';
 import { PerspectiveHeading } from '../ui/PerspectiveText';
-import { motion } from 'motion/react';
+import { ScrollReveal } from '../ui/ScrollReveal';
 
 const iconMap: Record<string, React.ElementType> = {
   Compass,
@@ -35,11 +35,18 @@ export const ServicesSection: React.FC = () => {
   };
 
   return (
-    <section className="py-20 lg:py-24 bg-[#f6f7fc] dark:bg-[#070d18] border-b border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300">
+    <section
+      id="services-section"
+      className="py-20 lg:py-24 bg-[#f6f7fc] dark:bg-[#070d18] border-b border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300 overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+        <ScrollReveal
+          variant="fade-up"
+          duration={700}
+          className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6"
+        >
           <div className="max-w-2xl">
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#245237] dark:text-[#21afc2] mb-2">
               <span>Trusted Infrastructure Advisory</span>
@@ -64,7 +71,7 @@ export const ServicesSection: React.FC = () => {
             <span>View All Services</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </button>
-        </div>
+        </ScrollReveal>
 
         {/* 4-Card 3D Interactive Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -73,85 +80,92 @@ export const ServicesSection: React.FC = () => {
             const indexNumber = `0${index + 1}`;
 
             return (
-              <Card3D
+              <ScrollReveal
                 key={service.id}
-                maxTilt={6}
-                scale={1.015}
-                className="w-full"
+                variant="fade-up"
+                delay={index * 110}
+                duration={720}
+                className="h-full"
               >
-                <div className="group h-full bg-white dark:bg-[#111C2E] rounded-2xl border border-slate-200/80 dark:border-slate-800/90 overflow-hidden shadow-xs hover:shadow-xl dark:hover:border-[#21afc2]/50 transition-all duration-300 flex flex-col">
-                  
-                  {/* Image Aspect Box with 3D Depth Scrim */}
-                  <div className="relative h-48 sm:h-56 w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
-                    <img
-                      src={service.image}
-                      alt={service.name}
-                      className="w-full h-full object-cover object-center group-hover:scale-104 transition-transform duration-700"
-                      referrerPolicy="no-referrer"
-                      onError={(e) => {
-                        (e.target as HTMLElement).style.display = 'none';
-                      }}
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                <Card3D
+                  maxTilt={6}
+                  scale={1.015}
+                  className="w-full h-full"
+                >
+                  <div className="group h-full bg-white dark:bg-[#111C2E] rounded-2xl border border-slate-200/80 dark:border-slate-800/90 overflow-hidden shadow-xs hover:shadow-xl dark:hover:border-[#21afc2]/50 transition-all duration-300 flex flex-col">
                     
-                    {/* Floating Number and Metric Tag */}
-                    <div className="absolute bottom-3.5 left-4 right-4 flex items-center justify-between text-white">
-                      <span className="text-xs font-mono tracking-wider font-bold opacity-90">
-                        {indexNumber}
-                      </span>
-                      <span className="text-xs font-medium bg-black/50 backdrop-blur-md px-3 py-1 rounded-full text-[#21afc2] border border-white/15">
-                        {service.metricsLabel}: <strong className="text-white">{service.metricsText}</strong>
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Content Area */}
-                  <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between">
-                    <div>
-                      <div className="flex items-center gap-2.5 mb-3">
-                        <div className="p-2 rounded-lg bg-emerald-50 dark:bg-emerald-950/50 text-[#245237] dark:text-[#21afc2] border border-emerald-100 dark:border-emerald-800/60">
-                          <IconComponent className="w-4 h-4" />
-                        </div>
-                        <span className="text-xs font-semibold uppercase tracking-wider text-[#245237] dark:text-[#21afc2]">
-                          {service.kicker}
+                    {/* Image Aspect Box with 3D Depth Scrim */}
+                    <div className="relative h-48 sm:h-56 w-full overflow-hidden bg-slate-100 dark:bg-slate-800">
+                      <img
+                        src={service.image}
+                        alt={service.name}
+                        className="w-full h-full object-cover object-center group-hover:scale-104 transition-transform duration-700"
+                        referrerPolicy="no-referrer"
+                        onError={(e) => {
+                          (e.target as HTMLElement).style.display = 'none';
+                        }}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/30 to-transparent" />
+                      
+                      {/* Floating Number and Metric Tag */}
+                      <div className="absolute bottom-3.5 left-4 right-4 flex items-center justify-between text-white">
+                        <span className="text-xs font-mono tracking-wider font-bold opacity-90">
+                          {indexNumber}
+                        </span>
+                        <span className="text-xs font-medium bg-black/50 backdrop-blur-md px-3 py-1 rounded-full text-[#21afc2] border border-white/15">
+                          {service.metricsLabel}: <strong className="text-white">{service.metricsText}</strong>
                         </span>
                       </div>
+                    </div>
 
-                      <h3 className="text-xl font-bold text-[#15233c] dark:text-white mb-3 group-hover:text-[#245237] dark:group-hover:text-[#21afc2] transition-colors leading-snug font-display">
-                        {service.name}
-                      </h3>
-
-                      <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
-                        {service.summary}
-                      </p>
-
-                      {/* Key Highlights */}
-                      <div className="space-y-2 mb-6">
-                        {service.bulletPoints.slice(0, 3).map((bp, bpIdx) => (
-                          <div key={bpIdx} className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-300">
-                            <CheckCircle2 className="w-3.5 h-3.5 text-[#245237] dark:text-[#21afc2] shrink-0 mt-0.5" />
-                            <span>{bp}</span>
+                    {/* Content Area */}
+                    <div className="p-6 sm:p-8 flex-1 flex flex-col justify-between">
+                      <div>
+                        <div className="flex items-center gap-2.5 mb-3">
+                          <div className="p-2 rounded-lg bg-emerald-50 dark:bg-emerald-950/50 text-[#245237] dark:text-[#21afc2] border border-emerald-100 dark:border-emerald-800/60">
+                            <IconComponent className="w-4 h-4" />
                           </div>
-                        ))}
+                          <span className="text-xs font-semibold uppercase tracking-wider text-[#245237] dark:text-[#21afc2]">
+                            {service.kicker}
+                          </span>
+                        </div>
+
+                        <h3 className="text-xl font-bold text-[#15233c] dark:text-white mb-3 group-hover:text-[#245237] dark:group-hover:text-[#21afc2] transition-colors leading-snug font-display">
+                          {service.name}
+                        </h3>
+
+                        <p className="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-6">
+                          {service.summary}
+                        </p>
+
+                        {/* Key Highlights */}
+                        <div className="space-y-2 mb-6">
+                          {service.bulletPoints.slice(0, 3).map((bp, bpIdx) => (
+                            <div key={bpIdx} className="flex items-start gap-2 text-xs text-slate-700 dark:text-slate-300">
+                              <CheckCircle2 className="w-3.5 h-3.5 text-[#245237] dark:text-[#21afc2] shrink-0 mt-0.5" />
+                              <span>{bp}</span>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+
+                      <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
+                        <button
+                          onClick={() => handleServiceClick(service.id)}
+                          className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#245237] dark:text-[#21afc2] hover:underline transition-colors cursor-pointer"
+                        >
+                          <span>Deep Dive & Case Insights</span>
+                          <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                        </button>
+                        
+                        <span className="text-xs text-slate-400 dark:text-slate-500 font-medium">
+                          Bombheq Advisory
+                        </span>
                       </div>
                     </div>
-
-                    <div className="pt-4 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between">
-                      <button
-                        onClick={() => handleServiceClick(service.id)}
-                        className="inline-flex items-center gap-1.5 text-xs font-semibold text-[#245237] dark:text-[#21afc2] hover:underline transition-colors cursor-pointer"
-                      >
-                        <span>Deep Dive & Case Insights</span>
-                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-                      </button>
-                      
-                      <span className="text-xs text-slate-400 dark:text-slate-500 font-medium">
-                        Bombheq Advisory
-                      </span>
-                    </div>
                   </div>
-                </div>
-              </Card3D>
+                </Card3D>
+              </ScrollReveal>
             );
           })}
         </div>

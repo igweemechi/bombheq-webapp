@@ -11,6 +11,7 @@ import {
 import { Card3D, Card3DLayer } from '../ui/Card3D';
 import { PerspectiveHeading } from '../ui/PerspectiveText';
 import { ProjectTimeline } from '../ui/ProjectTimeline';
+import { ScrollReveal } from '../ui/ScrollReveal';
 
 export const CaseStudiesSection: React.FC = () => {
   const { content, setActiveView } = useContent();
@@ -20,11 +21,18 @@ export const CaseStudiesSection: React.FC = () => {
   const [expandedTimelineId, setExpandedTimelineId] = useState<string | null>(null);
 
   return (
-    <section className="py-20 lg:py-24 bg-white dark:bg-[#0B111E] border-b border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300">
+    <section
+      id="cases-section"
+      className="py-20 lg:py-24 bg-white dark:bg-[#0B111E] border-b border-slate-200/80 dark:border-slate-800/80 transition-colors duration-300 overflow-hidden"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header + 3D View Switcher */}
-        <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-6">
+        <ScrollReveal
+          variant="fade-up"
+          duration={700}
+          className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-6"
+        >
           <div className="max-w-3xl">
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#245237] dark:text-[#21afc2] mb-2">
               <span>Proven Track Record</span>
@@ -72,7 +80,7 @@ export const CaseStudiesSection: React.FC = () => {
               <span>3D Deck Grid</span>
             </button>
           </div>
-        </div>
+        </ScrollReveal>
 
         {layoutMode === 'editorial' ? (
           /* Full-Width Individual 3D Tilt Project Cards with Parallax Depth Layers */
@@ -81,13 +89,18 @@ export const CaseStudiesSection: React.FC = () => {
               const isReversed = index % 2 !== 0;
 
               return (
-                <Card3D
+                <ScrollReveal
                   key={project.id}
-                  maxTilt={4.5}
-                  scale={1.012}
-                  perspective={1400}
-                  className="w-full"
+                  variant="blur-up"
+                  delay={index * 100}
+                  duration={750}
                 >
+                  <Card3D
+                    maxTilt={4.5}
+                    scale={1.012}
+                    perspective={1400}
+                    className="w-full"
+                  >
                   <div className="group bg-[#f6f7fc] dark:bg-[#111C2E] p-6 sm:p-10 rounded-2xl border border-slate-200/90 dark:border-slate-800 hover:border-[#245237]/40 dark:hover:border-[#21afc2]/50 shadow-sm hover:shadow-2xl transition-all duration-300 space-y-8">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
                       {/* Image Column with Elevated 3D Parallax Plane */}
@@ -193,24 +206,31 @@ export const CaseStudiesSection: React.FC = () => {
                       <ProjectTimeline project={project} compact />
                     </Card3DLayer>
                   </div>
-                </Card3D>
+                  </Card3D>
+                </ScrollReveal>
               );
             })}
           </div>
         ) : (
           /* 3-Column Interactive 3D Deck Grid Mode (High-Angle 3D Tilt Cards) */
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {caseStudies.map(project => {
+            {caseStudies.map((project, index) => {
               const isTimelineOpen = expandedTimelineId === project.id;
 
               return (
-                <Card3D
+                <ScrollReveal
                   key={project.id}
-                  maxTilt={9}
-                  scale={1.025}
-                  perspective={1050}
-                  className="w-full h-full"
+                  variant="scale-up"
+                  delay={index * 110}
+                  duration={700}
+                  className="h-full"
                 >
+                  <Card3D
+                    maxTilt={9}
+                    scale={1.025}
+                    perspective={1050}
+                    className="w-full h-full"
+                  >
                   <div className="group h-full bg-[#f6f7fc] dark:bg-[#111C2E] rounded-2xl border border-slate-200/90 dark:border-slate-800 hover:border-[#245237]/50 dark:hover:border-[#21afc2]/60 shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col justify-between overflow-hidden p-5 sm:p-6">
                     <div>
                       {/* 3D Floating Image Header */}
@@ -312,7 +332,8 @@ export const CaseStudiesSection: React.FC = () => {
                       )}
                     </Card3DLayer>
                   </div>
-                </Card3D>
+                  </Card3D>
+                </ScrollReveal>
               );
             })}
           </div>

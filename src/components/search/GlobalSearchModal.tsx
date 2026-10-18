@@ -52,8 +52,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
     isSearchOpen,
     setIsSearchOpen,
     setActiveView,
-    setFocusedItemId,
-    toggleCms
+    setFocusedItemId
   } = useContent();
 
   const [query, setQuery] = useState('');
@@ -243,25 +242,11 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
         customAction: () => {
           onOpenAdmin?.();
         }
-      },
-      {
-        id: 'action-cms',
-        itemId: 'cms-editor',
-        category: 'pages',
-        categoryLabel: 'Content Management',
-        title: 'Open Headless CMS & Live JSON Editor',
-        subtitle: 'Edit services, case studies, team bios, and site copy',
-        description: 'Modify site content in real time or export/import the complete site JSON schema.',
-        metaText: 'Headless CMS · Live Sync',
-        targetView: 'home',
-        customAction: () => {
-          toggleCms();
-        }
       }
     );
 
     return items;
-  }, [content, onOpenChat, onOpenAdmin, toggleCms]);
+  }, [content, onOpenChat, onOpenAdmin]);
 
   // Filter and score results by search query and category
   const filteredResults = useMemo<SearchResultItem[]>(() => {
