@@ -2,6 +2,13 @@ export type MessageSender = 'user' | 'assistant' | 'agent' | 'system';
 
 export type SentimentType = 'positive' | 'neutral' | 'frustrated' | 'urgent';
 
+export interface ChatAttachment {
+  name: string;
+  mimeType: string;
+  dataUrl: string;
+  size?: number;
+}
+
 export interface ChatMessage {
   id: string;
   sender: MessageSender;
@@ -13,6 +20,7 @@ export interface ChatMessage {
   suggestedActions?: string[];
   isEscalated?: boolean;
   ratingPrompt?: boolean;
+  attachment?: ChatAttachment;
 }
 
 export type ConversationStatus = 'ai_handling' | 'escalated' | 'agent_active' | 'resolved';
@@ -32,6 +40,7 @@ export interface Conversation {
   assignedAgent?: string;
   primaryIntent?: string;
   sentimentSummary?: SentimentType;
+  marketingOptIn?: boolean;
 }
 
 export interface KnowledgeBaseEntry {
@@ -49,6 +58,16 @@ export interface SupportAgent {
   role: string;
   avatar: string;
   status: 'online' | 'busy' | 'offline';
+}
+
+export interface FollowUpWorkflow {
+  id: string;
+  name: string;
+  triggerType: 'welcome' | 'post_inquiry' | 'consultation_confirmation' | 'post_service_feedback' | 'unresolved_followup';
+  delayLabel: string;
+  templateText: string;
+  enabled: boolean;
+  requiresOptIn: boolean;
 }
 
 export interface BotSettings {
@@ -83,4 +102,3 @@ export interface VoiceState {
   transcript: string;
   error?: string;
 }
-

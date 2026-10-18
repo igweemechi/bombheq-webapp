@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useContent } from '../../context/ContentContext';
 import { Compass, Layers, Scale, ShieldCheck, ArrowRight, CheckCircle2, ChevronRight } from 'lucide-react';
 import { Card3D } from '../ui/Card3D';
@@ -12,8 +12,14 @@ const iconMap: Record<string, React.ElementType> = {
 };
 
 export const ServicesPage: React.FC = () => {
-  const { content, setActiveView } = useContent();
+  const { content, setActiveView, focusedItemId } = useContent();
   const [selectedServiceId, setSelectedServiceId] = useState<string>(content.services[0]?.id || 'strategy');
+
+  useEffect(() => {
+    if (focusedItemId && content.services.some(s => s.id === focusedItemId)) {
+      setSelectedServiceId(focusedItemId);
+    }
+  }, [focusedItemId, content.services]);
 
   const selectedService = content.services.find(s => s.id === selectedServiceId) || content.services[0];
   const IconComponent = selectedService ? (iconMap[selectedService.iconName] || Compass) : Compass;

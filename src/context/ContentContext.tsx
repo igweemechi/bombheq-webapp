@@ -14,6 +14,10 @@ interface ContentContextType {
   toggleCms: () => void;
   activeView: string;
   setActiveView: (view: string) => void;
+  focusedItemId: string | null;
+  setFocusedItemId: (id: string | null) => void;
+  isSearchOpen: boolean;
+  setIsSearchOpen: (open: boolean | ((prev: boolean) => boolean)) => void;
   exportJson: () => string;
   downloadJsonFile: () => void;
   importJson: (jsonString: string) => { success: boolean; message: string };
@@ -25,22 +29,48 @@ const ContentContext = createContext<ContentContextType | undefined>(undefined);
 
 export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   const [content, setContent] = useState<SiteContent>(() => {
+    const defaults = defaultData as unknown as SiteContent;
     try {
       const saved = localStorage.getItem(STORAGE_KEY);
       if (saved) {
-        const parsed = JSON.parse(saved);
+        const parsed = JSON.parse(saved) as SiteContent;
         if (parsed && parsed.company && parsed.services) {
-          return parsed as SiteContent;
+          if (Array.isArray(parsed.caseStudies)) {
+            parsed.caseStudies = parsed.caseStudies.map(cs => {
+              const defaultCs = defaults.caseStudies.find(d => d.id === cs.id);
+              return {
+                ...cs,
+                milestones: cs.milestones && cs.milestones.length > 0 ? cs.milestones : defaultCs?.milestones
+              };
+            });
+          }
+          if (parsed.team && Array.isArray(parsed.team.members)) {
+            parsed.team.members = parsed.team.members.map(m => {
+              const defaultMember = defaults.team.members.find(d => d.id === m.id || d.name === m.name);
+              return {
+                ...m,
+                yearsExperience: m.yearsExperience || defaultMember?.yearsExperience,
+                keyCredentials: m.keyCredentials && m.keyCredentials.length > 0 ? m.keyCredentials : defaultMember?.keyCredentials,
+                skillMatrix: m.skillMatrix && m.skillMatrix.length > 0 ? m.skillMatrix : defaultMember?.skillMatrix
+              };
+            });
+          }
+          if (!parsed.faqs || parsed.faqs.length === 0) {
+            parsed.faqs = defaults.faqs;
+          }
+          return parsed;
         }
       }
     } catch (e) {
       console.warn('Could not read cached site content, using defaults:', e);
     }
-    return defaultData as unknown as SiteContent;
+    return defaults;
   });
 
   const [isCmsOpen, setIsCmsOpen] = useState(false);
   const [activeView, setActiveView] = useState('home');
+  const [focusedItemId, setFocusedItemId] = useState<string | null>(null);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [toastMessage, setToastMessage] = useState<string | null>(null);
 
   // Sync to document title whenever company or title changes
@@ -143,6 +173,10 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
         toggleCms,
         activeView,
         setActiveView,
+        focusedItemId,
+        setFocusedItemId,
+        isSearchOpen,
+        setIsSearchOpen,
         exportJson,
         downloadJsonFile,
         importJson,

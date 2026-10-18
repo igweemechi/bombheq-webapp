@@ -76,6 +76,17 @@ export interface AdvisoryService {
   }[];
 }
 
+export interface ProjectMilestone {
+  id: string;
+  phase: string;
+  title: string;
+  period: string;
+  status: 'completed' | 'in-progress' | 'upcoming';
+  deliverable: string;
+  description: string;
+  keyMetric?: string;
+}
+
 export interface CaseStudy {
   id: string;
   title: string;
@@ -87,6 +98,15 @@ export interface CaseStudy {
   description: string;
   image: string;
   keyOutcomes: string[];
+  milestones?: ProjectMilestone[];
+}
+
+export interface SkillMetric {
+  axis: string;
+  shortLabel: string;
+  score: number;
+  benchmark?: number;
+  description?: string;
 }
 
 export interface TeamMember {
@@ -98,6 +118,9 @@ export interface TeamMember {
   image: string;
   linkedin?: string;
   twitter?: string;
+  yearsExperience?: string;
+  keyCredentials?: string[];
+  skillMatrix?: SkillMetric[];
 }
 
 export interface CareersContent {
@@ -133,6 +156,17 @@ export interface FooterContent {
   quickLinks: { label: string; path: string }[];
 }
 
+export interface FaqItem {
+  id: string;
+  category: 'Strategy & Policy' | 'Procurement & PPP' | 'Commercial & Delivery' | 'Engagement & Disputes';
+  question: string;
+  answer: string;
+  keyTakeaways?: string[];
+  deliverableTag?: string;
+  relatedView?: string;
+  relatedLabel?: string;
+}
+
 export interface SiteContent {
   version: string;
   lastUpdated: string;
@@ -160,4 +194,5 @@ export interface SiteContent {
   careers: CareersContent;
   contact: ContactContent;
   footer: FooterContent;
+  faqs?: FaqItem[];
 }

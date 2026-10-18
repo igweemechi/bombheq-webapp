@@ -35,7 +35,8 @@ import {
   BotSettings, 
   DashboardMetrics, 
   SentimentType, 
-  ConversationStatus 
+  ConversationStatus,
+  FollowUpWorkflow
 } from '../../types/chat';
 import { useTheme } from '../../context/ThemeContext';
 
@@ -75,10 +76,12 @@ export const ChatbotAdminDashboard: React.FC<ChatbotAdminDashboardProps> = ({
   });
   const [keywordsInput, setKeywordsInput] = useState('');
 
-  // Settings State
+  // Settings & Workflows State
   const [botSettings, setBotSettings] = useState<BotSettings | null>(null);
+  const [workflows, setWorkflows] = useState<FollowUpWorkflow[]>([]);
   const [isSavingSettings, setIsSavingSettings] = useState(false);
   const [settingsSavedNotice, setSettingsSavedNotice] = useState(false);
+  const [workflowStatusMsg, setWorkflowStatusMsg] = useState<string | null>(null);
 
   // Analytics State
   const [metrics, setMetrics] = useState<DashboardMetrics | null>(null);
@@ -92,6 +95,7 @@ export const ChatbotAdminDashboard: React.FC<ChatbotAdminDashboardProps> = ({
       fetchConversations();
       fetchKnowledgeBase();
       fetchSettings();
+      fetchWorkflows();
       fetchMetrics();
     }
   }, [isOpen]);
@@ -145,6 +149,54 @@ export const ChatbotAdminDashboard: React.FC<ChatbotAdminDashboardProps> = ({
       }
     } catch (err) {
       console.error('Failed to load settings:', err);
+    }
+  };
+
+  const fetchWorkflows = async () => {
+    try {
+      const res = await fetch('/api/workflows');
+      if (res.ok) {
+        const data = await res.json();
+        setWorkflows(data);
+      }
+    } catch (err) {
+      console.error('Failed to load workflows:', err);
+    }
+  };
+
+  const handleTriggerWorkflow = async (convId: string, workflowId: string) => {
+    try {
+      const res = await fetch(`/api/conversations/${convId}/trigger-workflow`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ workflowId })
+      });
+      const data = await res.json();
+      if (res.ok && data.conversation) {
+        setConversations(prev => prev.map(c => c.id === convId ? data.conversation : c));
+        setWorkflowStatusMsg('Automated follow-up dispatched.');
+      } else {
+        setWorkflowStatusMsg(data.error || 'Could not dispatch follow-up.');
+      }
+      setTimeout(() => setWorkflowStatusMsg(null), 3000);
+    } catch (err) {
+      console.error('Failed to trigger workflow:', err);
+    }
+  };
+
+  const handleToggleWorkflow = async (wf: FollowUpWorkflow) => {
+    try {
+      const res = await fetch('/api/workflows', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ ...wf, enabled: !wf.enabled })
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data.workflows) setWorkflows(data.workflows);
+      }
+    } catch (err) {
+      console.error('Failed to update workflow:', err);
     }
   };
 
@@ -238,7 +290,6 @@ export const ChatbotAdminDashboard: React.FC<ChatbotAdminDashboardProps> = ({
   };
 
   const handleDeleteKbEntry = async (id: string) => {
-    if (!window.confirm('Are you sure you want to delete this knowledge article?')) return;
     try {
       const res = await fetch(`/api/knowledge-base/${id}`, {
         method: 'DELETE'
@@ -586,7 +637,24 @@ export const ChatbotAdminDashboard: React.FC<ChatbotAdminDashboardProps> = ({
                       </div>
                     </div>
 
-                    <div className="flex items-center gap-2">
+                    <div className="flex flex-wrap items-center gap-2">
+                      {workflows.filter(w => w.enabled).length > 0 && (
+                        <select
+                          defaultValue=""
+                          onChange={(e) => {
+                            if (e.target.value) {
+                              handleTriggerWorkflow(selectedConv.id, e.target.value);
+                              e.target.value = '';
+                            }
+                          }}
+                          className="text-xs px-2.5 py-1.5 rounded-xl border border-slate-300 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 cursor-pointer"
+                        >
+                          <option value="" disabled>Send Automated Follow-Up...</option>
+                          {workflows.filter(w => w.enabled).map(wf => (
+                            <option key={wf.id} value={wf.id}>{wf.name}</option>
+                          ))}
+                        </select>
+                      )}
                       {selectedConv.status !== 'resolved' && (
                         <button
                           onClick={() => handleResolveConversation(selectedConv.id)}
@@ -598,6 +666,11 @@ export const ChatbotAdminDashboard: React.FC<ChatbotAdminDashboardProps> = ({
                       )}
                     </div>
                   </div>
+                  {workflowStatusMsg && (
+                    <div className="px-4 py-1.5 bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 text-xs border-b border-emerald-200 dark:border-emerald-800">
+                      {workflowStatusMsg}
+                    </div>
+                  )}
 
                   {/* Summary Banner if Escalated */}
                   {selectedConv.summary && (
@@ -646,6 +719,21 @@ export const ChatbotAdminDashboard: React.FC<ChatbotAdminDashboardProps> = ({
                                 : 'bg-[#15233c] text-white rounded-tr-xs shadow-sm'
                             }`}
                           >
+                            {m.attachment && (
+                              <div className="mb-2">
+                                {m.attachment.mimeType.startsWith('image/') ? (
+                                  <img
+                                    src={m.attachment.dataUrl}
+                                    alt={m.attachment.name}
+                                    className="max-h-36 rounded-lg border border-slate-200/40 object-cover"
+                                  />
+                                ) : (
+                                  <span className="inline-block px-2 py-1 rounded bg-black/10 text-[11px] font-medium">
+                                    📎 {m.attachment.name}
+                                  </span>
+                                )}
+                              </div>
+                            )}
                             <div className="whitespace-pre-wrap">{m.text}</div>
                             {m.suggestedActions && (
                               <div className="mt-2 pt-2 border-t border-white/10 flex flex-wrap gap-1">
@@ -1176,6 +1264,53 @@ export const ChatbotAdminDashboard: React.FC<ChatbotAdminDashboardProps> = ({
                   >
                     {isSavingSettings ? 'Saving Settings...' : 'Save Bot Configuration'}
                   </button>
+                </div>
+
+                {/* Automated Messaging & Follow-Up Workflows Section */}
+                <div className="pt-6 border-t border-slate-200 dark:border-slate-800 space-y-3">
+                  <h4 className="text-sm font-bold text-slate-800 dark:text-white font-display flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-[#21afc2]" />
+                    <span>Automated Messaging & Follow-Up Rules</span>
+                  </h4>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                    Configure approved client follow-up templates and scheduling triggers. Respects client opt-in preferences.
+                  </p>
+                  <div className="grid grid-cols-1 gap-3">
+                    {workflows.map(wf => (
+                      <div
+                        key={wf.id}
+                        className="p-3.5 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-[#070D18] flex items-start justify-between gap-4"
+                      >
+                        <div className="space-y-1">
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs font-bold text-slate-800 dark:text-white">{wf.name}</span>
+                            <span className="text-[10px] px-2 py-0.5 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300">
+                              {wf.delayLabel}
+                            </span>
+                            {wf.requiresOptIn && (
+                              <span className="text-[10px] px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
+                                Opt-In Protected
+                              </span>
+                            )}
+                          </div>
+                          <p className="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+                            "{wf.templateText}"
+                          </p>
+                        </div>
+                        <button
+                          type="button"
+                          onClick={() => handleToggleWorkflow(wf)}
+                          className={`px-3 py-1 rounded-lg text-[11px] font-semibold cursor-pointer shrink-0 transition-colors ${
+                            wf.enabled
+                              ? 'bg-emerald-600 text-white'
+                              : 'bg-slate-200 dark:bg-slate-800 text-slate-500'
+                          }`}
+                        >
+                          {wf.enabled ? 'Enabled' : 'Paused'}
+                        </button>
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
               </form>

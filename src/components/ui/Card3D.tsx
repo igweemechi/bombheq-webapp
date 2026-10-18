@@ -1,4 +1,42 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, createContext, useContext } from 'react';
+
+interface Card3DContextValue {
+  isHovered: boolean;
+  mouseXRatio: number;
+  mouseYRatio: number;
+}
+
+const Card3DContext = createContext<Card3DContextValue>({
+  isHovered: false,
+  mouseXRatio: 0,
+  mouseYRatio: 0
+});
+
+export interface Card3DLayerProps {
+  children: React.ReactNode;
+  depth?: number;
+  className?: string;
+}
+
+export const Card3DLayer: React.FC<Card3DLayerProps> = ({
+  children,
+  depth = 24,
+  className = ''
+}) => {
+  const { isHovered } = useContext(Card3DContext);
+
+  return (
+    <div
+      className={`transition-transform duration-300 ease-out ${className}`}
+      style={{
+        transform: isHovered ? `translate3d(0px, 0px, ${depth}px)` : 'translate3d(0px, 0px, 0px)',
+        transformStyle: 'preserve-3d'
+      }}
+    >
+      {children}
+    </div>
+  );
+};
 
 interface Card3DProps {
   children: React.ReactNode;
@@ -6,6 +44,7 @@ interface Card3DProps {
   maxTilt?: number;
   scale?: number;
   glare?: boolean;
+  perspective?: number;
   onClick?: () => void;
 }
 
@@ -15,11 +54,21 @@ export const Card3D: React.FC<Card3DProps> = ({
   maxTilt = 8,
   scale = 1.02,
   glare = true,
+  perspective = 1100,
   onClick
 }) => {
   const cardRef = useRef<HTMLDivElement>(null);
-  const [transformStyle, setTransformStyle] = useState('');
-  const [glareStyle, setGlareStyle] = useState({ opacity: 0, x: 50, y: 50 });
+  const [transformStyle, setTransformStyle] = useState(
+    `perspective(${perspective}px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`
+  );
+  const [glareState, setGlareState] = useState({
+    opacity: 0,
+    x: 50,
+    y: 50,
+    pxX: 0,
+    pxY: 0
+  });
+  const [mouseRatio, setMouseRatio] = useState({ x: 0, y: 0 });
   const [isHovered, setIsHovered] = useState(false);
   const [isReducedMotion, setIsReducedMotion] = useState(false);
 
@@ -41,17 +90,27 @@ export const Card3D: React.FC<Card3DProps> = ({
     const centerX = rect.width / 2;
     const centerY = rect.height / 2;
 
-    const rotateX = ((y - centerY) / centerY) * -maxTilt;
-    const rotateY = ((x - centerX) / centerX) * maxTilt;
+    const ratioX = (x - centerX) / centerX;
+    const ratioY = (y - centerY) / centerY;
 
+    const rotateX = ratioY * -maxTilt;
+    const rotateY = ratioX * maxTilt;
+
+    setMouseRatio({ x: ratioX, y: ratioY });
     setTransformStyle(
-      `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(${scale}, ${scale}, ${scale})`
+      `perspective(${perspective}px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(${scale}, ${scale}, ${scale})`
     );
 
     if (glare) {
       const glareX = (x / rect.width) * 100;
       const glareY = (y / rect.height) * 100;
-      setGlareStyle({ opacity: 0.15, x: glareX, y: glareY });
+      setGlareState({
+        opacity: 1,
+        x: glareX,
+        y: glareY,
+        pxX: x,
+        pxY: y
+      });
     }
   };
 
@@ -62,41 +121,54 @@ export const Card3D: React.FC<Card3DProps> = ({
 
   const handleMouseLeave = () => {
     setIsHovered(false);
-    setTransformStyle('perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)');
-    setGlareStyle(prev => ({ ...prev, opacity: 0 }));
+    setMouseRatio({ x: 0, y: 0 });
+    setTransformStyle(
+      `perspective(${perspective}px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`
+    );
+    setGlareState(prev => ({ ...prev, opacity: 0 }));
   };
 
   return (
-    <div
-      ref={cardRef}
-      onClick={onClick}
-      onMouseMove={handleMouseMove}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      className={`relative preserve-3d will-change-transform ${className}`}
-      style={{
-        transform: transformStyle,
-        transition: isHovered ? 'transform 0.1s ease-out' : 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)'
+    <Card3DContext.Provider
+      value={{
+        isHovered,
+        mouseXRatio: mouseRatio.x,
+        mouseYRatio: mouseRatio.y
       }}
     >
-      {children}
+      <div
+        ref={cardRef}
+        onClick={onClick}
+        onMouseMove={handleMouseMove}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
+        className={`relative will-change-transform ${className}`}
+        style={{
+          transform: transformStyle,
+          transformStyle: 'preserve-3d',
+          transition: isHovered
+            ? 'transform 0.12s cubic-bezier(0.2, 0.8, 0.2, 1)'
+            : 'transform 0.55s cubic-bezier(0.16, 1, 0.3, 1)'
+        }}
+      >
+        {children}
 
-      {/* Subtle dynamic specular glare on tilt */}
-      {glare && !isReducedMotion && (
-        <div
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-0 rounded-[inherit] overflow-hidden transition-opacity duration-300"
-          style={{ opacity: glareStyle.opacity }}
-        >
+        {/* Dynamic cursor-tracked 3D specular spotlight & rim sheen */}
+        {glare && !isReducedMotion && (
           <div
-            className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent"
-            style={{
-              transform: `translate(${glareStyle.x - 50}%, ${glareStyle.y - 50}%)`,
-              filter: 'blur(10px)'
-            }}
-          />
-        </div>
-      )}
-    </div>
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 rounded-2xl overflow-hidden transition-opacity duration-300 z-20"
+            style={{ opacity: glareState.opacity }}
+          >
+            <div
+              className="absolute inset-0"
+              style={{
+                background: `radial-gradient(560px circle at ${glareState.pxX}px ${glareState.pxY}px, rgba(255, 255, 255, 0.14), rgba(33, 175, 194, 0.06) 40%, transparent 75%)`
+              }}
+            />
+          </div>
+        )}
+      </div>
+    </Card3DContext.Provider>
   );
 };

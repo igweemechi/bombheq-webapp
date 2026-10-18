@@ -1,24 +1,27 @@
 import express from 'express';
-import { createServer as createViteServer } from 'vite';
 import path from 'path';
 import fs from 'fs';
 import dotenv from 'dotenv';
 import { GoogleGenAI } from '@google/genai';
-import defaultKB from './src/data/defaultKnowledgeBase.json';
-import { 
+import type { 
   Conversation, 
   ChatMessage, 
+  ChatAttachment,
   KnowledgeBaseEntry, 
   BotSettings, 
   SentimentType, 
-  DashboardMetrics 
-} from './src/types/chat';
+  DashboardMetrics,
+  FollowUpWorkflow
+} from './src/types/chat.ts';
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT ? parseInt(process.env.PORT) : 3000;
 const DB_FILE = path.resolve('src/data/chatbot-db.json');
+const DEFAULT_KB_FILE = path.resolve('src/data/defaultKnowledgeBase.json');
+
+const defaultKB = JSON.parse(fs.readFileSync(DEFAULT_KB_FILE, 'utf-8'));
 
 app.use(express.json({ limit: '10mb' }));
 
@@ -39,17 +42,58 @@ if (process.env.GEMINI_API_KEY) {
   }
 }
 
+const defaultWorkflows: FollowUpWorkflow[] = [
+  {
+    id: 'wf-welcome',
+    name: 'New Client Welcome & Capabilities Brief',
+    triggerType: 'welcome',
+    delayLabel: 'Immediate on session start',
+    templateText: 'Welcome to Bombheq Partners. I am your AI Advisory Assistant. How can I assist you with our engineering advisory, next-generation procurement, or mega-project delivery services today?',
+    enabled: true,
+    requiresOptIn: false
+  },
+  {
+    id: 'wf-post-inquiry',
+    name: 'Post-Inquiry Advisory Follow-Up',
+    triggerType: 'post_inquiry',
+    delayLabel: 'After initial technical inquiry',
+    templateText: 'Following up on your infrastructure advisory inquiry—would you like us to prepare a tailored capability statement or arrange a 20-minute briefing with Dr. Marcus Vance or Elena Rostova?',
+    enabled: true,
+    requiresOptIn: true
+  },
+  {
+    id: 'wf-consultation-confirm',
+    name: 'Partner Consultation Confirmation',
+    triggerType: 'consultation_confirmation',
+    delayLabel: 'Upon consultation request',
+    templateText: 'Your consultation request has been registered with our Brisbane & Sydney practice desk. A senior partner will confirm calendar availability within 2 business hours.',
+    enabled: true,
+    requiresOptIn: false
+  },
+  {
+    id: 'wf-csat-survey',
+    name: 'Post-Resolution CSAT & Feedback Survey',
+    triggerType: 'post_service_feedback',
+    delayLabel: 'Upon conversation resolution',
+    templateText: 'Thank you for consulting with Bombheq Partners. To help us maintain our advisory standards, please rate your experience from 1 to 5 stars below.',
+    enabled: true,
+    requiresOptIn: false
+  }
+];
+
 // In-Memory Database with persistent file backup
 interface ChatbotDB {
   settings: BotSettings;
   knowledgeBase: KnowledgeBaseEntry[];
   conversations: Record<string, Conversation>;
+  workflows: FollowUpWorkflow[];
 }
 
 let db: ChatbotDB = {
   settings: defaultKB.settings as BotSettings,
   knowledgeBase: defaultKB.knowledgeBase as KnowledgeBaseEntry[],
   conversations: {},
+  workflows: defaultWorkflows
 };
 
 // Load existing DB if present
@@ -58,7 +102,10 @@ try {
     const raw = fs.readFileSync(DB_FILE, 'utf-8');
     const parsed = JSON.parse(raw);
     if (parsed.settings && parsed.knowledgeBase) {
-      db = parsed;
+      db = {
+        ...parsed,
+        workflows: parsed.workflows || defaultWorkflows
+      };
     }
   } else {
     // Seed sample conversation for real metrics
@@ -232,14 +279,21 @@ function generateFallbackResponse(userText: string, intent: string, needsEscalat
 // REST API ENDPOINTS
 // ==========================================
 
-// POST /api/chat - Generate client reply
+// POST /api/chat - Generate client reply (supports text + multimodal attachments)
 app.post('/api/chat', async (req, res) => {
   try {
-    const { conversationId, message, clientInfo } = req.body;
-    if (!message || typeof message !== 'string') {
-      return res.status(400).json({ error: 'Message text is required' });
+    const { conversationId, message, clientInfo, attachment } = req.body as {
+      conversationId?: string;
+      message?: string;
+      clientInfo?: { clientId?: string; name?: string; email?: string; marketingOptIn?: boolean };
+      attachment?: ChatAttachment;
+    };
+
+    if ((!message || typeof message !== 'string') && !attachment) {
+      return res.status(400).json({ error: 'Message text or attachment is required' });
     }
 
+    const cleanMessage = (message || (attachment ? `Attached file: ${attachment.name}` : '')).trim();
     const convId = conversationId || `conv-${Date.now()}-${Math.random().toString(36).substring(2, 7)}`;
     const now = new Date().toISOString();
 
@@ -255,12 +309,15 @@ app.post('/api/chat', async (req, res) => {
         createdAt: now,
         updatedAt: now,
         messages: [],
+        marketingOptIn: clientInfo?.marketingOptIn ?? true,
       };
       db.conversations[convId] = conv;
+    } else if (clientInfo?.marketingOptIn !== undefined) {
+      conv.marketingOptIn = clientInfo.marketingOptIn;
     }
 
     // Detect user intent & sentiment
-    const { intent, sentiment, needsEscalation } = detectIntentAndSentiment(message);
+    const { intent, sentiment, needsEscalation } = detectIntentAndSentiment(cleanMessage);
     conv.primaryIntent = intent;
     conv.sentimentSummary = sentiment;
 
@@ -268,10 +325,11 @@ app.post('/api/chat', async (req, res) => {
     const userMsg: ChatMessage = {
       id: `msg-${Date.now()}-user`,
       sender: 'user',
-      text: message.trim(),
+      text: cleanMessage,
       timestamp: now,
       intent,
-      sentiment
+      sentiment,
+      ...(attachment ? { attachment } : {})
     };
     conv.messages.push(userMsg);
 
@@ -292,10 +350,26 @@ app.post('/api/chat', async (req, res) => {
         
         // Build history turns for context retention (up to last 12 messages)
         const recentMessages = conv.messages.slice(-12);
-        const historyContents = recentMessages.map(m => ({
-          role: m.sender === 'user' ? 'user' : 'model',
-          parts: [{ text: m.text }]
-        }));
+        const historyContents = recentMessages.map(m => {
+          const parts: Array<{ text?: string; inlineData?: { mimeType: string; data: string } }> = [
+            { text: m.text }
+          ];
+          if (m.attachment && m.attachment.dataUrl && m.attachment.mimeType.startsWith('image/')) {
+            const base64Data = m.attachment.dataUrl.split(',')[1];
+            if (base64Data) {
+              parts.unshift({
+                inlineData: {
+                  mimeType: m.attachment.mimeType,
+                  data: base64Data
+                }
+              });
+            }
+          }
+          return {
+            role: m.sender === 'user' ? 'user' : 'model',
+            parts
+          };
+        });
 
         const response = await ai.models.generateContent({
           model: 'gemini-3.8-flash',
@@ -323,14 +397,18 @@ app.post('/api/chat', async (req, res) => {
         }
       } catch (geminiErr) {
         console.warn('Gemini generateContent call failed, using intelligent knowledge fallback:', geminiErr);
-        const fallback = generateFallbackResponse(message, intent, needsEscalation);
-        replyText = fallback.text;
+        const fallback = generateFallbackResponse(cleanMessage, intent, needsEscalation);
+        replyText = attachment
+          ? `Thank you for sharing the attachment "${attachment.name}". ${fallback.text}`
+          : fallback.text;
         suggestedActions = fallback.suggestedActions;
       }
     } else {
       // Offline / Fallback knowledge response
-      const fallback = generateFallbackResponse(message, intent, needsEscalation);
-      replyText = fallback.text;
+      const fallback = generateFallbackResponse(cleanMessage, intent, needsEscalation);
+      replyText = attachment
+        ? `I have received your file "${attachment.name}" and attached it to your advisory record for partner review. ${fallback.text}`
+        : fallback.text;
       suggestedActions = fallback.suggestedActions;
     }
 
@@ -624,6 +702,71 @@ app.put('/api/settings', (req, res) => {
   res.json({ success: true, settings: db.settings });
 });
 
+// GET /api/workflows - Automated messaging and follow-up rules
+app.get('/api/workflows', (req, res) => {
+  res.json(db.workflows || defaultWorkflows);
+});
+
+// POST /api/workflows - Update or add an automated follow-up workflow
+app.post('/api/workflows', (req, res) => {
+  const { id, name, triggerType, delayLabel, templateText, enabled, requiresOptIn } = req.body;
+  if (!name || !templateText) {
+    return res.status(400).json({ error: 'Name and template text are required' });
+  }
+  const wfId = id || `wf-${Date.now()}`;
+  const existingIdx = (db.workflows || []).findIndex(w => w.id === wfId);
+  const updatedWf: FollowUpWorkflow = {
+    id: wfId,
+    name: name.trim(),
+    triggerType: triggerType || 'post_inquiry',
+    delayLabel: delayLabel || 'Scheduled follow-up',
+    templateText: templateText.trim(),
+    enabled: enabled !== undefined ? Boolean(enabled) : true,
+    requiresOptIn: requiresOptIn !== undefined ? Boolean(requiresOptIn) : true
+  };
+  if (!db.workflows) db.workflows = [...defaultWorkflows];
+  if (existingIdx >= 0) {
+    db.workflows[existingIdx] = updatedWf;
+  } else {
+    db.workflows.push(updatedWf);
+  }
+  saveDb();
+  res.json({ success: true, workflow: updatedWf, workflows: db.workflows });
+});
+
+// POST /api/conversations/:id/trigger-workflow - Dispatch automated follow-up template into conversation
+app.post('/api/conversations/:id/trigger-workflow', (req, res) => {
+  const { id } = req.params;
+  const { workflowId } = req.body;
+  const conv = db.conversations[id];
+  if (!conv) return res.status(404).json({ error: 'Conversation not found' });
+
+  const wf = (db.workflows || defaultWorkflows).find(w => w.id === workflowId);
+  if (!wf) return res.status(404).json({ error: 'Workflow template not found' });
+
+  if (wf.requiresOptIn && conv.marketingOptIn === false) {
+    return res.status(400).json({ error: 'Client has opted out of automated promotional/follow-up messages.' });
+  }
+
+  const followUpMsg: ChatMessage = {
+    id: `msg-${Date.now()}-wf`,
+    sender: 'assistant',
+    senderName: `${db.settings.botName} · Automated Follow-Up`,
+    text: wf.templateText,
+    timestamp: new Date().toISOString(),
+    ratingPrompt: wf.triggerType === 'post_service_feedback',
+    suggestedActions: wf.triggerType === 'post_inquiry'
+      ? ['Book Partner Consultation', 'Request Capability Statement', 'No Thanks']
+      : undefined
+  };
+
+  conv.messages.push(followUpMsg);
+  conv.updatedAt = new Date().toISOString();
+  saveDb();
+
+  res.json({ success: true, message: followUpMsg, conversation: conv });
+});
+
 // GET /api/analytics - Real dashboard metrics computed from stored records
 app.get('/api/analytics', (req, res) => {
   const convs = Object.values(db.conversations);
@@ -685,6 +828,7 @@ app.get('/api/analytics', (req, res) => {
 // ==========================================
 async function startServer() {
   if (process.env.NODE_ENV !== 'production') {
+    const { createServer: createViteServer } = await import('vite');
     const vite = await createViteServer({
       server: { middlewareMode: true },
       appType: 'spa',

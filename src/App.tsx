@@ -2,12 +2,14 @@ import React, { useState } from 'react';
 import { ContentProvider, useContent } from './context/ContentContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { Navbar } from './components/layout/Navbar';
+import { BreadcrumbBar } from './components/layout/BreadcrumbBar';
 import { Footer } from './components/layout/Footer';
 import { HeroSlider } from './components/home/HeroSlider';
 import { OverviewSection } from './components/home/OverviewSection';
 import { ServicesSection } from './components/home/ServicesSection';
 import { CaseStudiesSection } from './components/home/CaseStudiesSection';
 import { TeamSection } from './components/home/TeamSection';
+import { FaqSection } from './components/home/FaqSection';
 import { CareersSection } from './components/home/CareersSection';
 import { ServicesPage } from './components/pages/ServicesPage';
 import { StrategyPage } from './components/pages/StrategyPage';
@@ -17,8 +19,10 @@ import { TeamPage } from './components/pages/TeamPage';
 import { ContactPage } from './components/pages/ContactPage';
 import { ContentManagerDrawer } from './components/cms/ContentManagerDrawer';
 import { PageTransition } from './components/ui/PageTransition';
+import { ScrollProgressBar } from './components/ui/ScrollProgressBar';
 import { ChatbotWidget } from './components/chat/ChatbotWidget';
 import { ChatbotAdminDashboard } from './components/chat/ChatbotAdminDashboard';
+import { GlobalSearchModal } from './components/search/GlobalSearchModal';
 import { SlidersHorizontal, CheckCircle2 } from 'lucide-react';
 
 const MainLayout: React.FC = () => {
@@ -49,6 +53,7 @@ const MainLayout: React.FC = () => {
             <ServicesSection />
             <CaseStudiesSection />
             <TeamSection />
+            <FaqSection onOpenChat={() => setIsChatOpen(true)} />
             <CareersSection />
           </>
         );
@@ -57,8 +62,20 @@ const MainLayout: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#f6f7fc] dark:bg-[#070d18] text-[#15233c] dark:text-slate-100 antialiased transition-colors duration-300">
-      {/* Top Navbar with Theme Toggle, AI Support, and Agent Desk */}
+      {/* Subtle Top Scroll Progress Bar */}
+      <ScrollProgressBar />
+
+      {/* Top Navbar with Global Search (Cmd/Ctrl+K), Theme Toggle and Agent Desk */}
       <Navbar 
+        onOpenChat={() => setIsChatOpen(true)}
+        onOpenAdmin={() => setIsAdminOpen(true)}
+      />
+
+      {/* Global SPA Hierarchy & Section Breadcrumb Bar */}
+      <BreadcrumbBar />
+
+      {/* Global Site Search Modal (Cmd/Ctrl + K) */}
+      <GlobalSearchModal
         onOpenChat={() => setIsChatOpen(true)}
         onOpenAdmin={() => setIsAdminOpen(true)}
       />

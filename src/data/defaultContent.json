@@ -272,6 +272,58 @@
         "Multimodal transit interchange optimisation across ferry, rail, and pedestrian corridors",
         "Innovative commercial transaction structure protecting heritage harbor assets",
         "Seamless alignment across state agencies, commercial lessees, and maritime authorities"
+      ],
+      "milestones": [
+        {
+          "id": "cq-1",
+          "phase": "Phase 01",
+          "title": "Precinct Masterplan & Multimodal Audit",
+          "period": "Q1 2017 – Q3 2017",
+          "status": "completed",
+          "deliverable": "Strategic Precinct Blueprint",
+          "description": "Evaluated passenger flow dynamics across ferry wharves, heavy rail, and CBD light rail interfaces while establishing heritage conservation boundaries.",
+          "keyMetric": "180,000+ Daily Commuter Trips Modeled"
+        },
+        {
+          "id": "cq-2",
+          "phase": "Phase 02",
+          "title": "Commercial & Value-Capture Structuring",
+          "period": "Q4 2017 – Q2 2018",
+          "status": "completed",
+          "deliverable": "Final Business Case & Risk Matrix",
+          "description": "Designed a public-private commercial model balancing retail activation, civic public realm upgrades, and continuous wharf operations.",
+          "keyMetric": "100% Gateway 2 Assurance Approval"
+        },
+        {
+          "id": "cq-3",
+          "phase": "Phase 03",
+          "title": "Market Sounding & ECI Procurement",
+          "period": "Q3 2018 – Q1 2019",
+          "status": "completed",
+          "deliverable": "Early Contractor Involvement (ECI) Deed",
+          "description": "Led structured market sounding with global consortiums and drafted collaborative ECI tender documentation with strict probity governance.",
+          "keyMetric": "3 Tier-1 Consortia Shortlisted"
+        },
+        {
+          "id": "cq-4",
+          "phase": "Phase 04",
+          "title": "Inter-Agency Governance & Staging",
+          "period": "Q2 2019 – Q4 2019",
+          "status": "completed",
+          "deliverable": "Live Harbour Operations Protocol",
+          "description": "Established interface agreements across Transport for NSW, Port Authority, City of Sydney, and heritage custodians for zero-disruption staging.",
+          "keyMetric": "Zero Unplanned Ferry Disruptions"
+        },
+        {
+          "id": "cq-5",
+          "phase": "Phase 05",
+          "title": "Transaction Close & Delivery Handover",
+          "period": "Q4 2019 – Ongoing",
+          "status": "in-progress",
+          "deliverable": "Commercial Execution Framework",
+          "description": "Transitioned commercial governance baselines and KPI dashboards to the precinct delivery team for staged civic renewal execution.",
+          "keyMetric": "$20B Precinct Program Baseline"
+        }
       ]
     },
     {
@@ -288,6 +340,58 @@
         "Underground tunneling and station cavern commercial risk structuring",
         "Alliance framework administration ensuring schedule fidelity",
         "Doubled capacity for the SEQ rail corridor connecting regional communities"
+      ],
+      "milestones": [
+        {
+          "id": "crr-1",
+          "phase": "Phase 01",
+          "title": "Packaging Strategy & Risk Allocation",
+          "period": "2018 – 2019",
+          "status": "completed",
+          "deliverable": "Multi-Package Procurement Model",
+          "description": "Separated the $5.4B program into Tunnel, Stations & Development (TSD) PPP and Rail, Integration & Systems (RIS) collaborative alliance packages.",
+          "keyMetric": "2 Core Delivery Packages Structured"
+        },
+        {
+          "id": "crr-2",
+          "phase": "Phase 02",
+          "title": "Alliance & PPP Transaction Close",
+          "period": "2019 – 2020",
+          "status": "completed",
+          "deliverable": "Executed Project Deeds & PAA",
+          "description": "Led commercial negotiations, target outturn cost (TOC) validation, and painshare/gainshare regime calibration for underground works.",
+          "keyMetric": "$5.4B Capital Commitment Locked"
+        },
+        {
+          "id": "crr-3",
+          "phase": "Phase 03",
+          "title": "Twin TBM Tunneling & Cavern Excavation",
+          "period": "2020 – 2022",
+          "status": "completed",
+          "deliverable": "5.9km Twin Tunnels Breakthrough",
+          "description": "Provided independent commercial governance and Geotechnical Baseline Report (GBR) administration during twin-bore tunneling beneath Brisbane River.",
+          "keyMetric": "4 Underground Station Caverns Excavated"
+        },
+        {
+          "id": "crr-4",
+          "phase": "Phase 04",
+          "title": "Station Fit-Out & ETCS Signalling",
+          "period": "2022 – 2024",
+          "status": "in-progress",
+          "deliverable": "Integrated Systems & Cavern Fit-Out",
+          "description": "Administering interface milestones between civil station contractors, high-capacity ETCS Level 2 signalling, and surface brownfield rail corridors.",
+          "keyMetric": "10.2km Corridor Systems Integration"
+        },
+        {
+          "id": "crr-5",
+          "phase": "Phase 05",
+          "title": "Dynamic Testing & Network Commissioning",
+          "period": "2025 – Target Opening",
+          "status": "upcoming",
+          "deliverable": "Operational Readiness & Handover",
+          "description": "Commercial close-out of construction packages, dynamic rollingstock trials, and transition to Queensland Rail passenger operations.",
+          "keyMetric": "2x SEQ Network Inner-City Capacity"
+        }
       ]
     },
     {
@@ -304,6 +408,58 @@
         "Comprehensive corridor alignment and speed trajectory analysis",
         "International procurement benchmarking for high-speed rollingstock and civil works",
         "Defensible economic business cases securing bipartisan investment backing"
+      ],
+      "milestones": [
+        {
+          "id": "fr-1",
+          "phase": "Phase 01",
+          "title": "Corridor Alignment & Speed Trajectory Study",
+          "period": "2020 – 2021",
+          "status": "completed",
+          "deliverable": "4-Corridor Strategic Options Report",
+          "description": "Evaluated dedicated high-speed alignments (250+ km/h) versus targeted brownfield deviations across Newcastle, Wollongong, Central West, and Canberra routes.",
+          "keyMetric": "4 Regional Megaregion Corridors"
+        },
+        {
+          "id": "fr-2",
+          "phase": "Phase 02",
+          "title": "International High-Speed Rail Benchmarking",
+          "period": "2021 – 2022",
+          "status": "completed",
+          "deliverable": "Global Delivery & Cost Benchmark Study",
+          "description": "Benchmarked European, UK, and East Asian high-speed rail procurement models, tunneling unit rates, and rollingstock fleet maintenance structures.",
+          "keyMetric": "14 Global HSR Programs Analyzed"
+        },
+        {
+          "id": "fr-3",
+          "phase": "Phase 03",
+          "title": "Economic Business Case & Staging Plan",
+          "period": "2022 – 2023",
+          "status": "completed",
+          "deliverable": "Staged Investment Business Case",
+          "description": "Quantified wider economic benefits, regional housing uplift, and travel-time savings to prioritize Sydney-to-Newcastle as Stage 1.",
+          "keyMetric": ">50% Journey Time Reduction Target"
+        },
+        {
+          "id": "fr-4",
+          "phase": "Phase 04",
+          "title": "Geotechnical & Corridor Preservation",
+          "period": "2023 – 2024",
+          "status": "in-progress",
+          "deliverable": "Corridor Protection & Tunneling Brief",
+          "description": "Advising on statutory corridor preservation, geotechnical borehole campaigns, and collaborative contracting frameworks for initial civil works.",
+          "keyMetric": "$20B Staged Capital Pathway"
+        },
+        {
+          "id": "fr-5",
+          "phase": "Phase 05",
+          "title": "Procurement Launch & Alliance Formation",
+          "period": "2025+",
+          "status": "upcoming",
+          "deliverable": "Stage 1 Delivery Procurement",
+          "description": "Transitioning from strategic definition to market engagement for civil tunneling, track systems, and next-generation fleet procurement.",
+          "keyMetric": "Stage 1 Market Readiness"
+        }
       ]
     }
   ],
@@ -320,7 +476,53 @@
         "bio": "25+ years advising Tier-1 sponsors and state governments on transport transitions and mega-project governance.",
         "image": "https://res.cloudinary.com/detfwst5p/image/upload/v1766658242/bombheq%20webpage/img/team-1_quxptn.jpg",
         "linkedin": "https://linkedin.com",
-        "twitter": "https://twitter.com"
+        "twitter": "https://twitter.com",
+        "yearsExperience": "25+ Years",
+        "keyCredentials": ["PhD Civil Systems", "FIEAust CPEng", "Gateway Review Chair"],
+        "skillMatrix": [
+          {
+            "axis": "Strategy & Policy",
+            "shortLabel": "Strategy",
+            "score": 98,
+            "benchmark": 82,
+            "description": "Cabinet-level business cases, multimodal network masterplanning, and statutory reform."
+          },
+          {
+            "axis": "Procurement & PPP",
+            "shortLabel": "Procurement",
+            "score": 90,
+            "benchmark": 80,
+            "description": "Market sounding, delivery model selection, and multi-billion-dollar packaging strategy."
+          },
+          {
+            "axis": "Commercial Governance",
+            "shortLabel": "Commercial",
+            "score": 94,
+            "benchmark": 84,
+            "description": "Executive board assurance, sovereign risk allocation, and investment gate reviews."
+          },
+          {
+            "axis": "Forensic & Disputes",
+            "shortLabel": "Disputes",
+            "score": 78,
+            "benchmark": 75,
+            "description": "Strategic dispute avoidance boards and independent peer review panels."
+          },
+          {
+            "axis": "Energy & Decarbonisation",
+            "shortLabel": "Energy",
+            "score": 84,
+            "benchmark": 78,
+            "description": "Net-zero transport fleet transition policy and Embodied Carbon governance."
+          },
+          {
+            "axis": "Rail & Civil Systems",
+            "shortLabel": "Systems",
+            "score": 92,
+            "benchmark": 85,
+            "description": "High-speed rail corridor preservation, metro network capacity, and precinct integration."
+          }
+        ]
       },
       {
         "id": "member-2",
@@ -330,7 +532,53 @@
         "bio": "Pioneer in collaborative alliance contracts and AI-assisted tender development for transport authorities.",
         "image": "https://res.cloudinary.com/detfwst5p/image/upload/v1766658241/bombheq%20webpage/img/team-2_l8gqnu.jpg",
         "linkedin": "https://linkedin.com",
-        "twitter": "https://twitter.com"
+        "twitter": "https://twitter.com",
+        "yearsExperience": "19+ Years",
+        "keyCredentials": ["MSc Infrastructure Finance", "Collaborative Contracting Lead", "Probity Accredited"],
+        "skillMatrix": [
+          {
+            "axis": "Strategy & Policy",
+            "shortLabel": "Strategy",
+            "score": 86,
+            "benchmark": 82,
+            "description": "Early market engagement frameworks and commercial feasibility structuring."
+          },
+          {
+            "axis": "Procurement & PPP",
+            "shortLabel": "Procurement",
+            "score": 99,
+            "benchmark": 80,
+            "description": "End-to-end EOI/RFT leadership, interactive tender workshops, and financial close."
+          },
+          {
+            "axis": "Commercial Governance",
+            "shortLabel": "Commercial",
+            "score": 95,
+            "benchmark": 84,
+            "description": "Target Outturn Cost (TOC) validation, painshare/gainshare regime design, and PPP deeds."
+          },
+          {
+            "axis": "Forensic & Disputes",
+            "shortLabel": "Disputes",
+            "score": 82,
+            "benchmark": 75,
+            "description": "Contractual claims mitigation and variation structuring during delivery."
+          },
+          {
+            "axis": "Energy & Decarbonisation",
+            "shortLabel": "Energy",
+            "score": 80,
+            "benchmark": 78,
+            "description": "Green procurement incentives and sustainability-linked KPIs in alliance contracts."
+          },
+          {
+            "axis": "Rail & Civil Systems",
+            "shortLabel": "Systems",
+            "score": 88,
+            "benchmark": 85,
+            "description": "Rollingstock PPP procurement, ETCS signalling packages, and franchise transactions."
+          }
+        ]
       },
       {
         "id": "member-3",
@@ -340,7 +588,53 @@
         "bio": "Court-appointed independent expert witness with forensic expertise across tunnel, bridge, and energy claims.",
         "image": "https://res.cloudinary.com/detfwst5p/image/upload/v1766658241/bombheq%20webpage/img/team-3_ucrl5y.jpg",
         "linkedin": "https://linkedin.com",
-        "twitter": "https://twitter.com"
+        "twitter": "https://twitter.com",
+        "yearsExperience": "22+ Years",
+        "keyCredentials": ["BEng (Hons) Tunneling", "FCIArb Arbitrator", "Supreme Court Expert Witness"],
+        "skillMatrix": [
+          {
+            "axis": "Strategy & Policy",
+            "shortLabel": "Strategy",
+            "score": 76,
+            "benchmark": 82,
+            "description": "Geotechnical risk baseline policy and statutory claims frameworks."
+          },
+          {
+            "axis": "Procurement & PPP",
+            "shortLabel": "Procurement",
+            "score": 84,
+            "benchmark": 80,
+            "description": "Drafting defensible technical specifications and Geotechnical Baseline Reports (GBR)."
+          },
+          {
+            "axis": "Commercial Governance",
+            "shortLabel": "Commercial",
+            "score": 96,
+            "benchmark": 84,
+            "description": "Security of Payment (SOPA) adjudication, quantum valuation, and delay analysis."
+          },
+          {
+            "axis": "Forensic & Disputes",
+            "shortLabel": "Disputes",
+            "score": 99,
+            "benchmark": 75,
+            "description": "Independent expert witness testimony, international arbitration, and forensic root-cause investigation."
+          },
+          {
+            "axis": "Energy & Decarbonisation",
+            "shortLabel": "Energy",
+            "score": 75,
+            "benchmark": 78,
+            "description": "Grid connection delay disputes, wind/solar EPC claims, and pumped-hydro civil claims."
+          },
+          {
+            "axis": "Rail & Civil Systems",
+            "shortLabel": "Systems",
+            "score": 95,
+            "benchmark": 85,
+            "description": "TBM underground caverns, long-span bridges, and complex brownfield rail interfaces."
+          }
+        ]
       },
       {
         "id": "member-4",
@@ -350,7 +644,53 @@
         "bio": "Leading clean energy advisory, transmission network structuring, and battery storage commercial frameworks.",
         "image": "https://res.cloudinary.com/detfwst5p/image/upload/v1766658241/bombheq%20webpage/img/team-4_dpf4b0.jpg",
         "linkedin": "https://linkedin.com",
-        "twitter": "https://twitter.com"
+        "twitter": "https://twitter.com",
+        "yearsExperience": "17+ Years",
+        "keyCredentials": ["MEng Power Systems", "REZ Commercial Advisor", "Clean Energy Council Fellow"],
+        "skillMatrix": [
+          {
+            "axis": "Strategy & Policy",
+            "shortLabel": "Strategy",
+            "score": 93,
+            "benchmark": 82,
+            "description": "Renewable Energy Zone (REZ) masterplanning, grid access policy, and decarbonisation roadmaps."
+          },
+          {
+            "axis": "Procurement & PPP",
+            "shortLabel": "Procurement",
+            "score": 91,
+            "benchmark": 80,
+            "description": "Long-Term Energy Service Agreements (LTESA), BESS offtake structuring, and transmission PPPs."
+          },
+          {
+            "axis": "Commercial Governance",
+            "shortLabel": "Commercial",
+            "score": 89,
+            "benchmark": 84,
+            "description": "Project finance due diligence, capex risk modelling, and yield assurance for clean energy assets."
+          },
+          {
+            "axis": "Forensic & Disputes",
+            "shortLabel": "Disputes",
+            "score": 74,
+            "benchmark": 75,
+            "description": "Marginal loss factor (MLF) and curtailment commercial resolution."
+          },
+          {
+            "axis": "Energy & Decarbonisation",
+            "shortLabel": "Energy",
+            "score": 99,
+            "benchmark": 78,
+            "description": "High-voltage transmission corridors, utility-scale BESS, green hydrogen, and zero-emission fleets."
+          },
+          {
+            "axis": "Rail & Civil Systems",
+            "shortLabel": "Systems",
+            "score": 83,
+            "benchmark": 85,
+            "description": "Rail traction substation electrification and heavy-haul fleet decarbonisation."
+          }
+        ]
       }
     ]
   },
@@ -413,5 +753,105 @@
       { "label": "Transaction Management", "path": "transaction" },
       { "label": "Contact Us", "path": "contact" }
     ]
-  }
+  },
+  "faqs": [
+    {
+      "id": "faq-1",
+      "category": "Strategy & Policy",
+      "question": "How does Bombheq Partners structure cabinet-level infrastructure business cases and statutory frameworks?",
+      "answer": "We combine rigorous engineering feasibility with Treasury-aligned economic appraisal to craft defensible Final Business Cases (FBC). Our partners work directly with sponsoring departments to define service need, evaluate multimodal corridor options, quantify wider economic benefits (WEBs), and establish statutory planning pathways that withstand Gateway assurance reviews.",
+      "keyTakeaways": [
+        "Full alignment with Infrastructure Australia and State Treasury Assurance Frameworks",
+        "Integrated engineering constructability, cost-risk P50/P90 modelling, and benefit-cost ratio (BCR) validation",
+        "Early statutory corridor preservation and multi-agency governance charters"
+      ],
+      "deliverableTag": "Strategic Business Case & Gateway Assurance",
+      "relatedView": "strategy",
+      "relatedLabel": "Explore Strategy & Policy Advisory"
+    },
+    {
+      "id": "faq-2",
+      "category": "Procurement & PPP",
+      "question": "How do you determine the optimal procurement model between Construct-Only, D&C, Collaborative Alliances, and PPPs?",
+      "answer": "Delivery model selection is driven by our structured Multi-Criteria Risk & Market Appetite Assessment. Rather than defaulting to rigid templates, we analyze geotechnical uncertainty, brownfield operational interfaces, balance-sheet constraints, and Tier-1 contractor capacity to package projects into bankable, high-competition contracts.",
+      "keyTakeaways": [
+        "Bespoke risk allocation matrices calibrated to current contractor market appetite",
+        "Incentivized Target Outturn Cost (TOC) and painshare/gainshare regime design for Alliances",
+        "End-to-end transaction management from Market Sounding and EOI through RFT evaluation and Financial Close"
+      ],
+      "deliverableTag": "Procurement Options & Transaction Structuring",
+      "relatedView": "transaction",
+      "relatedLabel": "Explore Transaction Management"
+    },
+    {
+      "id": "faq-3",
+      "category": "Commercial & Delivery",
+      "question": "What does 'Senior-Led Coalface Advisory' mean during live project execution and contract administration?",
+      "answer": "Unlike large pyramid consultancies that delegate delivery after contract award, Bombheq Partners embeds experienced Principals and Directors directly into your project executive team. We establish early-warning commercial telemetry, administer complex interface deeds, and resolve emerging technical variations before they crystallize into formal claims.",
+      "keyTakeaways": [
+        "Direct Principal and Partner accountability across every phase of delivery",
+        "Live interface governance between civil tunneling, stations, and rail/energy systems packages",
+        "Proactive variation assessment, schedule forensics, and independent payment certification"
+      ],
+      "deliverableTag": "Embedded Commercial & Delivery Governance",
+      "relatedView": "services",
+      "relatedLabel": "View All Advisory Services"
+    },
+    {
+      "id": "faq-4",
+      "category": "Commercial & Delivery",
+      "question": "How do Geotechnical Baseline Reports (GBRs) and interface agreements protect sponsors on mega-projects?",
+      "answer": "Subsurface conditions and multi-contractor interfaces represent the highest sources of cost overruns on major rail, tunnel, and pumped-hydro programs. Our engineering specialists author clear, contractual Geotechnical Baseline Reports and Interface Coordination Deeds that establish unambiguous physical and schedule baselines for all delivery partners.",
+      "keyTakeaways": [
+        "Clear contractual demarcation of foreseeable vs. unforeseeable ground conditions",
+        "Elimination of duplicate contingency pricing in contractor tender submissions",
+        "Binding milestone handover protocols between civil works and systems integration contractors"
+      ],
+      "deliverableTag": "Geotechnical & Systems Interface Assurance",
+      "relatedView": "cases",
+      "relatedLabel": "Inspect $45B+ Case Study Portfolio"
+    },
+    {
+      "id": "faq-5",
+      "category": "Strategy & Policy",
+      "question": "How do you integrate decarbonisation, Scope 3 embodied carbon, and clean energy transition goals into infrastructure programs?",
+      "answer": "Backed by our affiliation with the global Ricardo network, we embed quantifiable decarbonisation targets into both upfront policy and binding procurement KPIs. From Renewable Energy Zone (REZ) transmission structuring to zero-emission transport fleet transitions and low-carbon concrete/steel specifications, we turn net-zero policy into bankable commercial reality.",
+      "keyTakeaways": [
+        "Lifecycle carbon baselining (PAS 2080) integrated into tender evaluation weightings",
+        "Commercial structuring for Long-Term Energy Service Agreements (LTESA) and utility-scale BESS",
+        "Access to Ricardo's global environmental and clean-energy engineering specialists across 20+ countries"
+      ],
+      "deliverableTag": "Net-Zero & Clean Energy Commercial Frameworks",
+      "relatedView": "strategy",
+      "relatedLabel": "Explore Decarbonisation Strategy"
+    },
+    {
+      "id": "faq-6",
+      "category": "Engagement & Disputes",
+      "question": "How do your Dispute Avoidance Boards (DAB), forensic delay analysis, and Expert Witness engagements work?",
+      "answer": "When commercial differences arise, our court-appointed specialists provide independent, forensic analysis of critical-path delay, disruption, and quantum valuation. We serve on standing Dispute Avoidance Boards to resolve issues contemporaneously on site, and provide objective Expert Witness testimony in adjudication (SOPA), arbitration, and Supreme Court proceedings.",
+      "keyTakeaways": [
+        "Forensic critical-path retrospective delay and productivity loss modeling",
+        "Standing Dispute Avoidance Board (DAB) chairing and independent peer review",
+        "Strict independence and probity standards for arbitral tribunals and superior courts"
+      ],
+      "deliverableTag": "Forensic Claims & Independent Expert Witness",
+      "relatedView": "team",
+      "relatedLabel": "Meet Our Forensic & Advisory Leaders"
+    },
+    {
+      "id": "faq-7",
+      "category": "Engagement & Disputes",
+      "question": "What is the typical consulting process and timeline for engaging Bombheq Partners on a new mandate?",
+      "answer": "We operate with rapid mobilization and zero bureaucratic friction. Following an initial confidential scoping briefing with a Managing Partner, we conduct a targeted 48-hour conflict and probity clearance, issue a tailored methodology and senior team charter, and can mobilize embedded specialists or panel advisors within 5 to 10 business days.",
+      "keyTakeaways": [
+        "Step 1: Confidential Partner Discovery & Mandate Scoping (24–48 hours)",
+        "Step 2: Probity Clearance, Commercial Charter & Deliverable Roadmap",
+        "Step 3: Rapid Senior Team Mobilization via Government Panels or Direct Engagement"
+      ],
+      "deliverableTag": "Rapid Partner Mobilization (5–10 Days)",
+      "relatedView": "contact",
+      "relatedLabel": "Schedule a Confidential Partner Briefing"
+    }
+  ]
 }
