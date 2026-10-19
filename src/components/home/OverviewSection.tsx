@@ -1,6 +1,6 @@
 import React from 'react';
 import { useContent } from '../../context/ContentContext';
-import { CheckCircle2, ArrowRight, ShieldCheck, Building2, TrendingUp } from 'lucide-react';
+import { CheckCircle2, ArrowRight } from 'lucide-react';
 import { Card3D } from '../ui/Card3D';
 import { PerspectiveHeading } from '../ui/PerspectiveText';
 import { ScrollReveal } from '../ui/ScrollReveal';
@@ -37,17 +37,6 @@ export const OverviewSection: React.FC = () => {
                     (e.target as HTMLElement).style.display = 'none';
                   }}
                 />
-                
-                {/* 3D Depth Layer 1: Ricardo trust affiliation floating card */}
-                <div className="absolute top-5 left-5 bg-white/95 dark:bg-[#0B111E]/95 backdrop-blur-md p-4 rounded-xl border border-slate-200/80 dark:border-slate-700/80 shadow-lg max-w-[230px] transform translate-z-12">
-                  <div className="flex items-center gap-2 text-xs font-semibold text-[#245237] dark:text-[#21afc2]">
-                    <ShieldCheck className="w-4 h-4 text-[#245237] dark:text-[#21afc2]" />
-                    <span>A Ricardo Company</span>
-                  </div>
-                  <p className="text-[11px] text-slate-500 dark:text-slate-400 mt-1 leading-snug">
-                    Backed by global engineering intelligence and deep technical capabilities.
-                  </p>
-                </div>
 
                 {/* 3D Depth Layer 2: Bottom location tag */}
                 <div className="absolute bottom-5 right-5 bg-[#15233c]/90 dark:bg-black/85 text-white backdrop-blur-md px-3.5 py-2 rounded-lg text-xs font-medium border border-white/10 dark:border-slate-700 transform translate-z-6">

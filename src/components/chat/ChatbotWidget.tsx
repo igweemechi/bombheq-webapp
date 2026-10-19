@@ -26,13 +26,11 @@ import { ChatMessage, ChatAttachment, Conversation, VoicePersona } from '../../t
 interface ChatbotWidgetProps {
   isOpen?: boolean;
   onToggleOpen?: (open: boolean) => void;
-  onOpenAdmin?: () => void;
 }
 
 export const ChatbotWidget: React.FC<ChatbotWidgetProps> = ({
   isOpen: controlledIsOpen,
-  onToggleOpen,
-  onOpenAdmin
+  onToggleOpen
 }) => {
   const { setActiveView } = useContent();
   useTheme();
@@ -585,15 +583,6 @@ export const ChatbotWidget: React.FC<ChatbotWidgetProps> = ({
                   </div>
                   
                   <div className="flex items-center gap-2 shrink-0">
-                    {onOpenAdmin && (
-                      <button
-                        onClick={onOpenAdmin}
-                        className="text-slate-500 dark:text-slate-400 hover:text-[#245237] dark:hover:text-[#21afc2] underline cursor-pointer font-medium"
-                        title="Open AI Operations & Agent Takeover Console"
-                      >
-                        Admin Desk
-                      </button>
-                    )}
                     {!isEscalated && (
                       <button
                         onClick={() => setShowEscalationModal(true)}

@@ -58,6 +58,39 @@ export const ContentProvider: React.FC<{ children: React.ReactNode }> = ({ child
           if (!parsed.faqs || parsed.faqs.length === 0) {
             parsed.faqs = defaults.faqs;
           }
+          if (parsed.hero && Array.isArray(parsed.hero.slides)) {
+            parsed.hero.slides = parsed.hero.slides.filter(
+              s => s.id !== 'slide-procurement' && s.kicker !== 'Leading Edge Procurement'
+            );
+          }
+          if (parsed.company) {
+            parsed.company.affiliation = '';
+          }
+          if (parsed.valueProposition && Array.isArray(parsed.valueProposition.metrics)) {
+            parsed.valueProposition.metrics = parsed.valueProposition.metrics.map(m =>
+              m.id === 'm4' || /Ricardo/i.test(m.label)
+                ? { ...m, label: 'Engineering Intelligence' }
+                : m
+            );
+          }
+          if (parsed.careers) {
+            if (parsed.careers.affiliationNotice) {
+              parsed.careers.affiliationNotice = parsed.careers.affiliationNotice
+                .replace(/:\s*A Ricardo Company/gi, '')
+                .replace(/A Ricardo Company/gi, '')
+                .trim();
+            }
+            if (parsed.careers.description) {
+              parsed.careers.description = parsed.careers.description
+                .replace(/As part of Ricardo,/gi, 'At Bombheq Partners,')
+                .replace(/A Ricardo Company/gi, '');
+            }
+          }
+          if (parsed.footer && parsed.footer.copyrightText) {
+            parsed.footer.copyrightText = parsed.footer.copyrightText
+              .replace(/\s*A Ricardo Company\.?/gi, '')
+              .trim();
+          }
           return parsed;
         }
       }

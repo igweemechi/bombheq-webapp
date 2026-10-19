@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ContentProvider, useContent } from './context/ContentContext';
 import { ThemeProvider } from './context/ThemeContext';
 import { Navbar } from './components/layout/Navbar';
@@ -6,7 +6,6 @@ import { BreadcrumbBar } from './components/layout/BreadcrumbBar';
 import { Footer } from './components/layout/Footer';
 import { HeroSlider } from './components/home/HeroSlider';
 import { OverviewSection } from './components/home/OverviewSection';
-import { ServicesSection } from './components/home/ServicesSection';
 import { CaseStudiesSection } from './components/home/CaseStudiesSection';
 import { TeamSection } from './components/home/TeamSection';
 import { FaqSection } from './components/home/FaqSection';
@@ -20,14 +19,19 @@ import { ContactPage } from './components/pages/ContactPage';
 import { PageTransition } from './components/ui/PageTransition';
 import { ScrollProgressBar } from './components/ui/ScrollProgressBar';
 import { ChatbotWidget } from './components/chat/ChatbotWidget';
-import { ChatbotAdminDashboard } from './components/chat/ChatbotAdminDashboard';
 import { GlobalSearchModal } from './components/search/GlobalSearchModal';
 import { CheckCircle2 } from 'lucide-react';
 
 const MainLayout: React.FC = () => {
   const { activeView, toastMessage } = useContent();
   const [isChatOpen, setIsChatOpen] = useState(false);
-  const [isAdminOpen, setIsAdminOpen] = useState(false);
+  const [gmpQuotaExceeded, setGmpQuotaExceeded] = useState(false);
+
+  useEffect(() => {
+    const handleQuotaExceeded = () => setGmpQuotaExceeded(true);
+    window.addEventListener('gmp-quota-exceeded', handleQuotaExceeded);
+    return () => window.removeEventListener('gmp-quota-exceeded', handleQuotaExceeded);
+  }, []);
 
   const renderCurrentView = () => {
     switch (activeView) {
@@ -49,7 +53,6 @@ const MainLayout: React.FC = () => {
           <>
             <HeroSlider />
             <OverviewSection />
-            <ServicesSection />
             <CaseStudiesSection />
             <TeamSection />
             <FaqSection onOpenChat={() => setIsChatOpen(true)} />
@@ -61,13 +64,29 @@ const MainLayout: React.FC = () => {
 
   return (
     <div className="min-h-screen flex flex-col bg-[#f6f7fc] dark:bg-[#070d18] text-[#15233c] dark:text-slate-100 antialiased transition-colors duration-300">
+      {gmpQuotaExceeded && (
+        <div className="bg-amber-50 border-b border-amber-200 text-amber-900 px-4 py-2.5 text-xs md:text-sm text-center sticky top-0 z-50 shadow-sm">
+          <span>
+            Google Maps Platform quota reached. If you are the app owner, visit{' '}
+            <a
+              href="https://developers.google.com/maps/ai/ai-studio?utm_campaign=gmp_mcp_codeassist_v1_aistudio#quota_exceeded_errors"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="underline font-semibold text-amber-950 hover:text-amber-800"
+            >
+              maps developer site
+            </a>{' '}
+            for instructions to update your account.
+          </span>
+        </div>
+      )}
+
       {/* Subtle Top Scroll Progress Bar */}
       <ScrollProgressBar />
 
-      {/* Top Navbar with Global Search (Cmd/Ctrl+K), Theme Toggle and Agent Desk */}
+      {/* Top Navbar with Global Search (Cmd/Ctrl+K) and Theme Toggle */}
       <Navbar 
         onOpenChat={() => setIsChatOpen(true)}
-        onOpenAdmin={() => setIsAdminOpen(true)}
       />
 
       {/* Global SPA Hierarchy & Section Breadcrumb Bar */}
@@ -76,7 +95,6 @@ const MainLayout: React.FC = () => {
       {/* Global Site Search Modal (Cmd/Ctrl + K) */}
       <GlobalSearchModal
         onOpenChat={() => setIsChatOpen(true)}
-        onOpenAdmin={() => setIsAdminOpen(true)}
       />
 
       {/* Main View Area with 3D Page Transitions */}
@@ -89,24 +107,12 @@ const MainLayout: React.FC = () => {
       {/* Footer */}
       <Footer 
         onOpenChat={() => setIsChatOpen(true)}
-        onOpenAdmin={() => setIsAdminOpen(true)}
       />
 
       {/* Intelligent AI Customer Support Bot Widget (Bottom Right) */}
       <ChatbotWidget
         isOpen={isChatOpen}
         onToggleOpen={setIsChatOpen}
-        onOpenAdmin={() => setIsAdminOpen(true)}
-      />
-
-      {/* Chatbot Admin & Agent Operations Dashboard Modal */}
-      <ChatbotAdminDashboard
-        isOpen={isAdminOpen}
-        onClose={() => setIsAdminOpen(false)}
-        onOpenClientChat={() => {
-          setIsAdminOpen(false);
-          setIsChatOpen(true);
-        }}
       />
 
       {/* Toast Notification */}

@@ -1,14 +1,13 @@
 import React from 'react';
 import { useContent } from '../../context/ContentContext';
 import { useTheme } from '../../context/ThemeContext';
-import { MapPin, Phone, Mail, ArrowUp, Sun, Moon, ShieldCheck, Bot } from 'lucide-react';
+import { MapPin, Phone, Mail, ArrowUp, Sun, Moon, Bot } from 'lucide-react';
 
 interface FooterProps {
-  onOpenAdmin?: () => void;
   onOpenChat?: () => void;
 }
 
-export const Footer: React.FC<FooterProps> = ({ onOpenAdmin, onOpenChat }) => {
+export const Footer: React.FC<FooterProps> = ({ onOpenChat }) => {
   const { content, setActiveView } = useContent();
   const { theme, toggleTheme } = useTheme();
 
@@ -49,8 +48,7 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin, onOpenChat }) => {
             </p>
 
             <div className="pt-2 text-xs text-slate-400">
-              <span className="font-semibold text-white/90">{content.company.affiliation}</span>
-              <p className="text-[11px] text-slate-400 mt-0.5">
+              <p className="text-[11px] text-slate-400">
                 Global engineering intelligence & transaction advisory.
               </p>
             </div>
@@ -114,16 +112,6 @@ export const Footer: React.FC<FooterProps> = ({ onOpenAdmin, onOpenChat }) => {
                 >
                   <Bot className="w-3.5 h-3.5" />
                   <span>AI Support</span>
-                </button>
-              )}
-
-              {onOpenAdmin && (
-                <button
-                  onClick={onOpenAdmin}
-                  className="inline-flex items-center gap-1.5 text-[11px] text-emerald-400 hover:text-white transition-colors border border-emerald-700/60 rounded-lg px-2.5 py-1.5 cursor-pointer bg-emerald-950/40 hover:bg-emerald-900/60"
-                >
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>Agent Desk</span>
                 </button>
               )}
 

@@ -6,7 +6,9 @@ import { Card3D } from '../ui/Card3D';
 
 export const HeroSlider: React.FC = () => {
   const { content, setActiveView } = useContent();
-  const slides = content.hero?.slides || [];
+  const slides = (content.hero?.slides || []).filter(
+    s => s.id !== 'slide-procurement' && s.kicker !== 'Leading Edge Procurement'
+  );
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
 
@@ -19,7 +21,8 @@ export const HeroSlider: React.FC = () => {
   }, [slides.length, isPaused, content.hero?.autoPlayIntervalMs]);
 
   if (slides.length === 0) return null;
-  const currentSlide = slides[currentIndex];
+  const safeIndex = currentIndex % slides.length;
+  const currentSlide = slides[safeIndex];
 
   const handleNext = () => {
     setCurrentIndex(prev => (prev + 1) % slides.length);
@@ -82,10 +85,6 @@ export const HeroSlider: React.FC = () => {
               <span className="flex items-center gap-1.5">
                 <Sparkles className="w-3.5 h-3.5 text-[#21afc2]" />
                 {currentSlide.kicker}
-              </span>
-              <span aria-hidden="true" className="text-white/40">·</span>
-              <span className="text-white/70 normal-case tracking-normal font-normal">
-                {content.company.affiliation}
               </span>
             </motion.div>
 

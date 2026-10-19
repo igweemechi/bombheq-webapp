@@ -4,7 +4,7 @@
   "company": {
     "name": "Bombheq Partners",
     "tagline": "CONSULTING ENGINEERS",
-    "affiliation": "A Ricardo Company",
+    "affiliation": "",
     "address": "102 Anderson Drive Greenbank, QLD 4124, Australia",
     "addressShort": "102 Anderson Drive Greenbank",
     "phone": "+0410-826-339",
@@ -60,17 +60,6 @@
         "secondaryCtaText": "Consultation",
         "secondaryCtaLink": "contact",
         "bgImage": "https://res.cloudinary.com/detfwst5p/image/upload/v1766658234/bombheq%20webpage/img/fast-rail-1_k097jz.jpg"
-      },
-      {
-        "id": "slide-procurement",
-        "kicker": "Leading Edge Procurement",
-        "title": "Next-generation procurement and data-rich digital environments.",
-        "subtitle": "Maximising collaboration, testing next-gen delivery models, and managing risk to turn multi-billion dollar master plans into operational realities.",
-        "ctaText": "Transaction Advisory",
-        "ctaLink": "transaction",
-        "secondaryCtaText": "Meet Our Team",
-        "secondaryCtaLink": "team",
-        "bgImage": "https://res.cloudinary.com/detfwst5p/image/upload/v1766658242/bombheq%20webpage/img/transcation-1_rhvods.jpg"
       }
     ]
   },
@@ -101,7 +90,7 @@
       },
       {
         "id": "m4",
-        "label": "Ricardo Global Network",
+        "label": "Engineering Intelligence",
         "value": "Global",
         "subtext": "World-class engineering backing"
       }
@@ -697,8 +686,8 @@
   "careers": {
     "kicker": "Careers at Bombheq",
     "title": "We’re engaging the best and brightest to build our high performing and diverse team",
-    "description": "As part of Ricardo, we remain deeply committed to the work we do and the people we work with. We’re looking to engage the best and brightest minds to be part of our high-performing team, contributing to impactful, challenging, and rewarding assignments. If this sounds like something that fits your values and interests, we would be delighted to hear from you.",
-    "affiliationNotice": "Bombheq Partners: A Ricardo Company",
+    "description": "At Bombheq Partners, we remain deeply committed to the work we do and the people we work with. We’re looking to engage the best and brightest minds to be part of our high-performing team, contributing to impactful, challenging, and rewarding assignments. If this sounds like something that fits your values and interests, we would be delighted to hear from you.",
+    "affiliationNotice": "Bombheq Partners",
     "image": "https://res.cloudinary.com/detfwst5p/image/upload/v1766658226/bombheq%20webpage/img/bombheq_with_picture_yjqge8.jpg",
     "ctaText": "Join the Team",
     "openPositions": [
@@ -744,7 +733,7 @@
   },
   "footer": {
     "tagline": "The world is evolving, and traditional service delivery models are changing. Bombheq Partners delivers engineering clarity, next-generation procurement, and strategic policy leadership.",
-    "copyrightText": "Bombheq Partners. All Rights Reserved. A Ricardo Company.",
+    "copyrightText": "Bombheq Partners. All Rights Reserved.",
     "quickLinks": [
       { "label": "Our People", "path": "team" },
       { "label": "Case Studies", "path": "cases" },
@@ -815,11 +804,11 @@
       "id": "faq-5",
       "category": "Strategy & Policy",
       "question": "How do you integrate decarbonisation, Scope 3 embodied carbon, and clean energy transition goals into infrastructure programs?",
-      "answer": "Backed by our affiliation with the global Ricardo network, we embed quantifiable decarbonisation targets into both upfront policy and binding procurement KPIs. From Renewable Energy Zone (REZ) transmission structuring to zero-emission transport fleet transitions and low-carbon concrete/steel specifications, we turn net-zero policy into bankable commercial reality.",
+      "answer": "Backed by our deep engineering and commercial intelligence, we embed quantifiable decarbonisation targets into both upfront policy and binding procurement KPIs. From Renewable Energy Zone (REZ) transmission structuring to zero-emission transport fleet transitions and low-carbon concrete/steel specifications, we turn net-zero policy into bankable commercial reality.",
       "keyTakeaways": [
         "Lifecycle carbon baselining (PAS 2080) integrated into tender evaluation weightings",
         "Commercial structuring for Long-Term Energy Service Agreements (LTESA) and utility-scale BESS",
-        "Access to Ricardo's global environmental and clean-energy engineering specialists across 20+ countries"
+        "Access to multi-disciplinary environmental and clean-energy engineering specialists"
       ],
       "deliverableTag": "Net-Zero & Clean Energy Commercial Frameworks",
       "relatedView": "strategy",

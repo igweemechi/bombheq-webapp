@@ -38,14 +38,12 @@ export interface SearchResultItem {
 
 interface GlobalSearchModalProps {
   onOpenChat?: () => void;
-  onOpenAdmin?: () => void;
 }
 
 const RECENT_SEARCHES_KEY = 'bombheq_recent_searches_v1';
 
 export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
-  onOpenChat,
-  onOpenAdmin
+  onOpenChat
 }) => {
   const {
     content,
@@ -154,8 +152,7 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
         image: member.image,
         highlights: [
           `Role: ${member.role}`,
-          `Specialization: ${member.specialization}`,
-          content.company.affiliation
+          `Specialization: ${member.specialization}`
         ],
         targetView: 'team'
       });
@@ -228,25 +225,11 @@ export const GlobalSearchModal: React.FC<GlobalSearchModalProps> = ({
         customAction: () => {
           onOpenChat?.();
         }
-      },
-      {
-        id: 'action-agent-desk',
-        itemId: 'agent-desk',
-        category: 'pages',
-        categoryLabel: 'Administration',
-        title: 'Open AI Support Operations & Agent Desk',
-        subtitle: 'Live conversation monitoring, knowledge base & analytics',
-        description: 'Review client conversations, intervene as a human partner, manage FAQs, and configure follow-up workflows.',
-        metaText: 'Admin Console · Real-Time Metrics',
-        targetView: 'home',
-        customAction: () => {
-          onOpenAdmin?.();
-        }
       }
     );
 
     return items;
-  }, [content, onOpenChat, onOpenAdmin]);
+  }, [content, onOpenChat]);
 
   // Filter and score results by search query and category
   const filteredResults = useMemo<SearchResultItem[]>(() => {

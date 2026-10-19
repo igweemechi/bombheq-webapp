@@ -204,7 +204,6 @@ function buildKnowledgePrompt(): string {
   return `
 BOMBHEQ PARTNERS OFFICIAL KNOWLEDGE BASE:
 Firm: Bombheq Partners | Consulting Engineers
-Affiliation: A Ricardo Company (Global Engineering Group)
 Head Office: 102 Anderson Drive Greenbank, QLD 4124, Australia
 Phone: +0410-826-339
 Email: Bombheqpartners@gmail.com
@@ -270,7 +269,7 @@ function generateFallbackResponse(userText: string, intent: string, needsEscalat
   }
 
   return {
-    text: "Thank you for reaching out to Bombheq Partners. As part of Ricardo, we provide specialized engineering strategy, collaborative procurement, and dispute advisory. How can we support your infrastructure or commercial requirements today?",
+    text: "Thank you for reaching out to Bombheq Partners. We provide specialized engineering strategy, collaborative procurement, and dispute advisory. How can we support your infrastructure or commercial requirements today?",
     suggestedActions: ["Advisory Services", "Landmark Projects", "Contact Office", "Speak with Specialist"]
   };
 }
@@ -836,6 +835,9 @@ async function startServer() {
     app.use(vite.middlewares);
   } else {
     app.use(express.static('dist'));
+    app.get(['/agent-desk', '/agent-desk/', '/admin', '/admin/'], (req, res) => {
+      res.sendFile(path.resolve('dist/agent-desk.html'));
+    });
     app.get('*', (req, res) => {
       res.sendFile(path.resolve('dist/index.html'));
     });

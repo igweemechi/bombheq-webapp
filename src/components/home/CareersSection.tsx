@@ -60,8 +60,6 @@ export const CareersSection: React.FC = () => {
             
             <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-wider text-[#245237] dark:text-[#21afc2] mb-3">
               <span>{careers.kicker}</span>
-              <span aria-hidden="true" className="text-slate-300 dark:text-slate-700">·</span>
-              <span className="text-slate-500 dark:text-slate-400 normal-case font-normal">{careers.affiliationNotice}</span>
             </div>
 
             <PerspectiveHeading

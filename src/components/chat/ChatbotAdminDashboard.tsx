@@ -41,15 +41,19 @@ import {
 import { useTheme } from '../../context/ThemeContext';
 
 interface ChatbotAdminDashboardProps {
-  isOpen: boolean;
-  onClose: () => void;
+  isOpen?: boolean;
+  onClose?: () => void;
   onOpenClientChat?: () => void;
+  onOpenCms?: () => void;
+  standalone?: boolean;
 }
 
 export const ChatbotAdminDashboard: React.FC<ChatbotAdminDashboardProps> = ({ 
-  isOpen, 
+  isOpen = true, 
   onClose,
-  onOpenClientChat 
+  onOpenClientChat,
+  onOpenCms,
+  standalone = false
 }) => {
   const { theme } = useTheme();
   const [activeTab, setActiveTab] = useState<'conversations' | 'knowledge' | 'settings' | 'analytics'>('conversations');
@@ -400,10 +404,22 @@ export const ChatbotAdminDashboard: React.FC<ChatbotAdminDashboardProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200 font-sans">
-      <div className="relative w-full max-w-7xl h-[92vh] max-h-[900px] bg-white dark:bg-[#0B111E] rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 flex flex-col overflow-hidden text-slate-800 dark:text-slate-100">
+    <div
+      className={
+        standalone
+          ? 'min-h-screen w-full flex flex-col bg-[#f6f7fc] dark:bg-[#070d18] font-sans'
+          : 'fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 md:p-6 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200 font-sans'
+      }
+    >
+      <div
+        className={
+          standalone
+            ? 'relative w-full flex-1 h-screen bg-white dark:bg-[#0B111E] flex flex-col overflow-hidden text-slate-800 dark:text-slate-100'
+            : 'relative w-full max-w-7xl h-[92vh] max-h-[900px] bg-white dark:bg-[#0B111E] rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 flex flex-col overflow-hidden text-slate-800 dark:text-slate-100'
+        }
+      >
         
-        {/* Modal Top Bar */}
+        {/* Top Bar */}
         <div className="px-6 py-4 bg-[#15233c] dark:bg-[#070d18] text-white flex items-center justify-between border-b border-white/10 dark:border-slate-800">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-[#245237] to-[#21afc2] flex items-center justify-center text-white shadow-lg">
@@ -412,10 +428,10 @@ export const ChatbotAdminDashboard: React.FC<ChatbotAdminDashboardProps> = ({
             <div>
               <div className="flex items-center gap-2">
                 <h2 className="text-base font-bold tracking-tight font-display">
-                  AI Customer Support Operations Center
+                  Agent Desk · AI Customer Support Operations Center
                 </h2>
                 <span className="px-2 py-0.5 rounded-full text-[10px] font-bold bg-emerald-500/20 text-emerald-300">
-                  Full-Stack Live
+                  Standalone Admin
                 </span>
               </div>
               <p className="text-xs text-slate-300">
@@ -424,7 +440,17 @@ export const ChatbotAdminDashboard: React.FC<ChatbotAdminDashboardProps> = ({
             </div>
           </div>
 
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2.5">
+            {onOpenCms && (
+              <button
+                onClick={onOpenCms}
+                className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold text-white transition-all cursor-pointer"
+              >
+                <Settings className="w-3.5 h-3.5 text-emerald-400" />
+                <span>Site CMS Manager</span>
+              </button>
+            )}
+
             {onOpenClientChat && (
               <button
                 onClick={onOpenClientChat}
@@ -435,13 +461,27 @@ export const ChatbotAdminDashboard: React.FC<ChatbotAdminDashboardProps> = ({
               </button>
             )}
 
-            <button
-              onClick={onClose}
-              className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
-              aria-label="Close Admin Modal"
-            >
-              <X className="w-5 h-5" />
-            </button>
+            {standalone ? (
+              onClose && (
+                <button
+                  onClick={onClose}
+                  className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-[#245237] hover:bg-[#1b3e2a] text-xs font-semibold text-white transition-all cursor-pointer shadow-xs"
+                >
+                  <ExternalLink className="w-3.5 h-3.5" />
+                  <span>Public Website</span>
+                </button>
+              )
+            ) : (
+              onClose && (
+                <button
+                  onClick={onClose}
+                  className="p-2 rounded-xl text-slate-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer"
+                  aria-label="Close Admin Modal"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              )
+            )}
           </div>
         </div>
 

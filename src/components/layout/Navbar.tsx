@@ -10,17 +10,15 @@ import {
   ChevronRight,
   Sun,
   Moon,
-  ShieldCheck,
   Search
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
 interface NavbarProps {
-  onOpenAdmin?: () => void;
   onOpenChat?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenAdmin }) => {
+export const Navbar: React.FC<NavbarProps> = () => {
   const { content, activeView, setActiveView, setIsSearchOpen } = useContent();
   const { theme, toggleTheme } = useTheme();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -56,19 +54,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAdmin }) => {
               <span>{content.company.hours}</span>
             </div>
           </div>
-          
-          <div className="flex items-center gap-4">
-            <span className="text-white/70 dark:text-slate-400 text-[11px] font-medium tracking-wide">
-              {content.company.affiliation}
-            </span>
-          </div>
         </div>
       </div>
 
       {/* Main Top Navigation - 3-Zone Contract with Glassmorphism */}
       <div className="bg-white/95 dark:bg-[#0B111E]/95 backdrop-blur-md shadow-xs dark:shadow-2xl border-b border-slate-200/80 dark:border-slate-800/90 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between gap-6 lg:gap-8 h-20">
+          <div className="flex items-center justify-between gap-6 lg:gap-8 h-22 sm:h-24">
             
             {/* Zone 1: Brand Logo as Index Link (Image Only) */}
             <button 
@@ -79,7 +71,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAdmin }) => {
               <img 
                 src={theme === 'dark' ? (content.company.logoWhite || content.company.logoPrimary) : content.company.logoPrimary} 
                 alt={content.company.name} 
-                className="h-11 sm:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                className="h-14 sm:h-16 md:h-20 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                 onError={(e) => {
                   (e.target as HTMLElement).style.display = 'none';
                 }}
@@ -166,18 +158,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAdmin }) => {
               </button>
 
 
-              {/* Agent Operations Center Toggle */}
-              {onOpenAdmin && (
-                <button
-                  onClick={onOpenAdmin}
-                  className="hidden md:flex items-center gap-1.5 px-3 py-2 text-xs font-semibold rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 hover:bg-slate-200 dark:hover:bg-slate-700 transition-all cursor-pointer"
-                  title="Open AI Operations Center & Agent Takeover"
-                >
-                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400" />
-                  <span className="hidden lg:inline">Agent Desk</span>
-                </button>
-              )}
-
               {/* Primary Action Button with 3D Depth (Desktop only) */}
               <button
                 onClick={() => handleNavClick('contact')}
@@ -252,19 +232,6 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenAdmin }) => {
                 ⌘K
               </kbd>
             </button>
-
-            {onOpenAdmin && (
-              <button
-                onClick={() => {
-                  onOpenAdmin();
-                  setMobileMenuOpen(false);
-                }}
-                className="w-full flex items-center justify-center gap-2 px-4 py-2.5 text-xs font-semibold bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-200 border border-slate-200 dark:border-slate-700 rounded-lg cursor-pointer"
-              >
-                <ShieldCheck className="w-4 h-4 text-emerald-600 dark:text-emerald-400" />
-                <span>Agent Operations Center</span>
-              </button>
-            )}
           </div>
         </div>
       )}

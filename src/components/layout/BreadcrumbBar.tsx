@@ -23,12 +23,11 @@ export interface BreadcrumbNode {
 }
 
 const HOME_SECTIONS = [
-  { id: 'overview', label: 'Overview', selector: 'section:nth-of-type(2)' },
-  { id: 'services', label: 'Advisory Services', selector: 'section:nth-of-type(3)' },
-  { id: 'cases', label: 'Case Studies', selector: 'section:nth-of-type(4)' },
-  { id: 'team', label: 'Leadership & Skill Matrix', selector: 'section:nth-of-type(5)' },
+  { id: 'overview', label: 'Overview', selector: '#overview-section' },
+  { id: 'cases', label: 'Case Studies', selector: '#cases-section' },
+  { id: 'team', label: 'Leadership', selector: '#team-section' },
   { id: 'faq', label: 'Process FAQ', selector: '#faq-section' },
-  { id: 'careers', label: 'Careers', selector: 'section:nth-of-type(7)' }
+  { id: 'careers', label: 'Careers', selector: '#careers-section' }
 ];
 
 export const BreadcrumbBar: React.FC = () => {
@@ -63,16 +62,15 @@ export const BreadcrumbBar: React.FC = () => {
       }
 
       const faqEl = document.getElementById('faq-section');
-      const matrixEl = document.getElementById('team-skill-matrix');
+      const teamEl = document.getElementById('team-section');
+      const casesEl = document.getElementById('cases-section');
 
       if (faqEl && scrollY >= faqEl.offsetTop - 260) {
         setActiveHomeSection('Engineering & Process FAQ');
-      } else if (matrixEl && scrollY >= matrixEl.offsetTop - 450) {
-        setActiveHomeSection('Leadership & Skill Matrix');
-      } else if (scrollY > 2100) {
+      } else if (teamEl && scrollY >= teamEl.offsetTop - 260) {
+        setActiveHomeSection('Expert Leadership');
+      } else if (casesEl && scrollY >= casesEl.offsetTop - 260) {
         setActiveHomeSection('Case Studies ($45B+ Portfolio)');
-      } else if (scrollY > 1250) {
-        setActiveHomeSection('Core Advisory Services');
       } else {
         setActiveHomeSection('Value Proposition & Rigor');
       }

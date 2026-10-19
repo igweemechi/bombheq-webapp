@@ -40,10 +40,10 @@ export const TeamPage: React.FC = () => {
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <h3 className="text-base font-bold text-[#15233c] dark:text-white mb-1 font-display">
-                A Ricardo Company
+                Engineering Excellence
               </h3>
               <p className="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                As part of the global Ricardo network, our local Australian teams leverage multi-disciplinary engineering specialists across 20+ countries.
+                Our local Australian teams leverage multi-disciplinary engineering and commercial specialists to deliver complex infrastructure mandates.
               </p>
             </div>
           </Card3D>

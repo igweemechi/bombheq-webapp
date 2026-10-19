@@ -6,7 +6,7 @@
     "botPersona": "professional_consulting",
     "escalationThreshold": "on_frustration",
     "autoFeedbackPrompt": true,
-    "systemPromptAddendum": "You are the official AI Client Service Assistant for Bombheq Partners, an engineering and infrastructure advisory consultancy affiliated with Ricardo. Always provide courteous, precise, and verified facts. Never invent contract amounts, private client secrets, or fake statuses. Offer to escalate to our human partners if questions require formal commercial engagement.",
+    "systemPromptAddendum": "You are the official AI Client Service Assistant for Bombheq Partners, an engineering and infrastructure advisory consultancy. Always provide courteous, precise, and verified facts. Never invent contract amounts, private client secrets, or fake statuses. Offer to escalate to our human partners if questions require formal commercial engagement.",
     "activeAgents": [
       {
         "id": "agent-marcus",
@@ -36,12 +36,11 @@
       "id": "kb-about",
       "category": "services",
       "question": "What is Bombheq Partners and what do you do?",
-      "answer": "Bombheq Partners is a specialized consulting engineering and infrastructure advisory firm. As part of Ricardo, we work hand-in-hand with governments, public transport authorities, and private sponsors to deliver successful infrastructure solutions across Strategy & Policy, Procurement & Transaction Management, Contract Disputes, and Commercial Governance.",
+      "answer": "Bombheq Partners is a specialized consulting engineering and infrastructure advisory firm. We work hand-in-hand with governments, public transport authorities, and private sponsors to deliver successful infrastructure solutions across Strategy & Policy, Procurement & Transaction Management, Contract Disputes, and Commercial Governance.",
       "keywords": [
         "about",
         "who",
         "overview",
-        "ricardo",
         "company",
         "firm"
       ]
@@ -154,7 +153,7 @@
       "id": "kb-probity",
       "category": "pricing_probity",
       "question": "What are your probity and confidentiality protocols?",
-      "answer": "As a Ricardo company, Bombheq Partners adheres to strict international probity, ethics, and conflict-of-interest standards. All government and commercial tender disclosures are safeguarded under strict NDAs and dedicated clean-team data enclosures.",
+      "answer": "Bombheq Partners adheres to strict international probity, ethics, and conflict-of-interest standards. All government and commercial tender disclosures are safeguarded under strict NDAs and dedicated clean-team data enclosures.",
       "keywords": [
         "probity",
         "confidentiality",
@@ -168,7 +167,7 @@
       "id": "kb-careers",
       "category": "faq",
       "question": "Is Bombheq Partners currently hiring?",
-      "answer": "Yes! As part of Ricardo, we are seeking bright and ambitious professionals. Current open roles include: Senior Infrastructure Transaction Specialist, Commercial Advisory Consultant (Rail & Transport), Forensic Delay Analyst, and Renewable Energy Transition Strategist. Inquire via our Careers section or contact us directly.",
+      "answer": "Yes! We are seeking bright and ambitious professionals. Current open roles include: Senior Infrastructure Transaction Specialist, Commercial Advisory Consultant (Rail & Transport), Forensic Delay Analyst, and Renewable Energy Transition Strategist. Inquire via our Careers section or contact us directly.",
       "keywords": [
         "careers",
         "jobs",
